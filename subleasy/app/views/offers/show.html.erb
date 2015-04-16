@@ -2,6 +2,8 @@
 	<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;">
 		<div class="center" style="text-align:center;">
 			<h3><%= link_to 'View the other offers', controller: 'offers' %></h3>
+			<h3><%= link_to 'Edit this offer', edit_offer_path(@offer.id) %></h3>
+			<h3><%= link_to 'Delete', offer_path(@offer.id), method: :delete, data: { confirm: 'Are you sure?' } %></h3>
 			<img src="<%= @offer.image %>" alt="house" height=250px></img>
 		</div>
 		<h3>Address</h3>
@@ -21,5 +23,6 @@
 		<p>Air conditioning? <%= @offer.aircond ? 'Yes' : 'No' %></p>
 		<p>Handicap? <%= @offer.handicap ? 'Yes' : 'No' %></p>
 		<p>Parking? <%= @offer.parking ? 'Yes' : 'No' %></p>
+		<p>People interested in this sublease: <%= @offer.interested %></p>
 	</div>
 </div>

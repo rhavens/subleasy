@@ -8,7 +8,7 @@
 				<h3><a><%= link_to offer.line1 + ' ' + offer.line2, offer_path(offer.id) %></a></h3>
 				<img src="<%= offer.image %>" alt="house" height=250px />
 			</div>
-			<h4><%= offer.line1%><% if offer.line2.nil? %><%= ' ' %><% end %><%= ', ' + offer.city %>, <%= offer.state %>. <%= offer.zip %></h4>
+			<h4><%= offer.line1%><%= ' ' + offer.line2 if (not offer.line2.empty?) %><%= ', ' + offer.city %>, <%= offer.state %>. <%= offer.zip %></h4>
 			<h4>Monthly rent: $<%= offer.rent %></h4>
 			<h4>Utilities included:</h4>
 			<p>Water: <%= offer.water ? 'Yes' : 'No' %></p>
@@ -21,6 +21,7 @@
 			<p>Air conditioning? <%= offer.aircond ? 'Yes' : 'No' %></p>
 			<p>Handicap? <%= offer.handicap ? 'Yes' : 'No' %></p>
 			<p>Parking? <%= offer.parking ? 'Yes' : 'No' %></p>
+			<p>People interested in this sublease: <%= offer.interested %></p>
 		</div>
 	</div>
 	<% end %>
