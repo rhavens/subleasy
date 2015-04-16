@@ -1,0 +1,81 @@
+<%= form_for :offer, url: offers_path do |f| %>
+  	<table>
+  		<tr>
+  			<td>Have a photo? Link an image.</td>
+  		</tr>
+  		<tr>
+  			<td><%= f.text_field :image %></td>
+  		</tr>
+	  	<tr>
+		  	<td>Address Line 1</td>
+		    <td>Address Line 2</td>
+		</tr>
+			<td><%= f.text_field :line1, :required => true %></td>
+		    <td><%= f.text_field :line2 %></td>
+		</tr>
+		<tr>
+		    <td>City</td>
+		    <td>State</td>
+		    <td>Zip Code</td>
+		</tr>
+		<tr>
+			<td><%= f.text_field :city, :required => true %></td>
+		    <td><%= f.select :state, options_for_select(us_states),{}, class:'form_control', :required => true %></td>
+    		<td><%= f.number_field :zip, within: 0...99999, :required => true %></td>
+    	</tr>
+
+		<tr>
+			<td>Monthly Rent</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td><%= f.number_field :rent, within: 0...9999, :required => true %></td>
+		</tr>
+		<tr>
+			<td>Earliest potential start date</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.date_field :start_date, :required => true %>
+			</td>
+		</tr>
+		<tr>
+			<td>Latest potential end date</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.date_field :end_date, :required => true %>
+			</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td>Utilities included?</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td><%= f.check_box :water %>Water</td>
+			<td><%= f.check_box :electric %>Electric</td>
+			<td><%= f.check_box :gas %>Gas</td>
+			<td><%= f.check_box :heat %>Heat</td>
+			<td><%= f.check_box :internet %>Internet</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td>Other</td>
+		</tr>
+		<tr>
+			<td><%= f.check_box :washdry %>Washer/dryer?</td>
+			<td><%= f.check_box :aircond %>Air conditioning?</td>
+			<td><%= f.check_box :handicap %>Handicap accessible?</td>
+			<td><%= f.check_box :parking %>Parking space?</td>
+		</tr>
+
+		<tr>
+    		<td><%= f.submit %></td>
+    	</tr>
+	</table>
+<% end %>

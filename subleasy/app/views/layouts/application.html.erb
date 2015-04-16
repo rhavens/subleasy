@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subleasy</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="header" style="height:50px;">
+		<h1 style="text-align:center;">Subleasy</h1>
+	</div>
+	<% if flash[:notice] -%>
+		<p class="notice"><%= flash[:notice] %></p>
+	<% end -%>
+	<% if flash[:error] -%>
+	  <p class="error"><%= flash[:error] %></p>
+	<% end -%>
+	<%= yield %>
+	<div class="footer" style="height:150px;">
+	</div>
+</body>
+</html>
