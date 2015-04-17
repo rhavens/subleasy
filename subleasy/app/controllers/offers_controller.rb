@@ -16,13 +16,13 @@ class OffersController < ApplicationController
 	end
 
 	def create
-		@offer = Offer.new(offer_params)
+		@offer = current_user.offers.build(offer_params)
 
-		if @offer.save
-			flash[:notice] = "Success! Your offer has been posted."
+		if @offer.save!
+			notice = "Success! Your offer has been posted."
 			redirect_to @offer
 		else
-			flash[:error] = "Failed to post offer. Correct any errors in your form and try again."
+			error = "Failed to post offer. Correct any errors in your form and try again."
 			render :new
 		end
 	end

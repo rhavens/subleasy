@@ -1,5 +1,5 @@
 class Offer < ActiveRecord::Base
-	belongs_to :user
+	belongs_to :user, class_name: "User", :foreign_key => "user_id"
 
 	before_validation :squish_whitespace
 	validates :image, :format => URI::regexp(%w(http https))

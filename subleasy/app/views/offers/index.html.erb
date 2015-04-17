@@ -1,27 +1,14 @@
 <div class="wrapper" style="text-align:center;width:800px;margin:auto;">
 	<h1>Offer Listing</h1>
 	<h3><%= link_to 'Post a new offer', new_offer_path %></h3>
-	<% @offers.each do |offer| %>
+ 	<% @offers.each do |offer| %>
 	<div class="box" style="text-align:center;">
 		<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;">
 			<div class="center" style="text-align:center;">
 				<h3><a><%= link_to offer.line1 + ' ' + offer.line2, offer_path(offer.id) %></a></h3>
-				<img src="<%= offer.image %>" alt="house" height=250px />
+				<h3><a><%= link_to offer.user.email, offer.user %></a></h3>
 			</div>
-			<h4><%= offer.line1%><%= ' ' + offer.line2 if (not offer.line2.empty?) %><%= ', ' + offer.city %>, <%= offer.state %>. <%= offer.zip %></h4>
-			<h4>Monthly rent: $<%= offer.rent %></h4>
-			<h4>Utilities included:</h4>
-			<p>Water: <%= offer.water ? 'Yes' : 'No' %></p>
-			<p>Internet: <%= offer.internet ? 'Yes' : 'No' %></p>
-			<p>Electric: <%= offer.electric ? 'Yes' : 'No' %></p>
-			<p>Heat: <%= offer.heat ? 'Yes' : 'No' %></p>
-			<p>Gas: <%= offer.gas ? 'Yes' : 'No' %></p>
-			<h4>Other information:</h4>
-			<p>Washer/dryer? <%= offer.washdry ? 'Yes' : 'No' %></p>
-			<p>Air conditioning? <%= offer.aircond ? 'Yes' : 'No' %></p>
-			<p>Handicap? <%= offer.handicap ? 'Yes' : 'No' %></p>
-			<p>Parking? <%= offer.parking ? 'Yes' : 'No' %></p>
-			<p>People interested in this sublease: <%= offer.interested %></p>
+			<%= render partial: 'offer', locals: {offer: offer} %>
 		</div>
 	</div>
 	<% end %>
