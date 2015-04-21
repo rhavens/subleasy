@@ -1,3 +1,13 @@
 <p><%= @user.email %></p>
 <p><%= link_to 'Offer' %></p>
-<p><%= render partial: "offer", collection: @user.offers %></p>
+ 	<% @user.offers.each do |offer| %>
+	<div class="box" style="text-align:center;">
+		<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;">
+			<div class="center" style="text-align:center;">
+				<h3><a><%= link_to offer.line1 + ' ' + offer.line2, offer_path(offer.id) %></a></h3>
+				<h3><a><%= link_to offer.user.email, offer.user %></a></h3>
+			</div>
+			<%= render partial: 'offers/offer', locals: {offer: offer} %>
+		</div>
+	</div>
+	<% end %>
