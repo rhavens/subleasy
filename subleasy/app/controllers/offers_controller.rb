@@ -1,10 +1,13 @@
 class OffersController < ApplicationController
+	add_breadcrumb :index, :offer_path
+
 	def index
 		@offers = Offer.all
 	end
 
 	def show
 		@offer = Offer.find(params[:id])
+		add_breadcrumb @offer.id, offer_path(@offer)
 	end
 
 	def new
