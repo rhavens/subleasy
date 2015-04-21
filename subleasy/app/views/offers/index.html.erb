@@ -1,5 +1,8 @@
 <div class="wrapper" style="text-align:center;width:800px;margin:auto;">
 	<h1>Offer Listing</h1>
+	<div style='width: 800px;'>
+	  <div id="map" style='width: 800px; height: 400px;'></div>
+	</div>
 	<h3><%= link_to 'Post a new offer', new_offer_path %></h3>
  	<% @offers.each do |offer| %>
 	<div class="box" style="text-align:center;">
@@ -13,3 +16,41 @@
 	</div>
 	<% end %>
 </div>
+
+<script type="text/javascript">
+	handler = Gmaps.build('Google');
+	handler.buildMap({
+	    provider: {
+	      disableDefaultUI: true,
+	      center: {lat: 42.407484, lng: -71.119023},
+	      zoom: 14
+	    },
+	    internal: {
+	      id: 'map'
+	    },
+	  },
+	  function(){
+	    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+	    console.log(markers)
+	    // handler.bounds.extendWith(markers);
+	    // handler.fitMapToBounds();
+	  }
+
+	);
+</script>
+
+<!-- var pinColor = "FE7569";
+var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+    new google.maps.Size(21, 34),
+    new google.maps.Point(0,0),
+    new google.maps.Point(10, 34));
+var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+    new google.maps.Size(40, 37),
+    new google.maps.Point(0, 0),
+    new google.maps.Point(12, 35));
+var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(0,0), 
+            map: map,
+            icon: pinImage,
+            shadow: pinShadow
+        }); -->

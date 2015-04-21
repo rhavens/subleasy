@@ -4,6 +4,8 @@ class Offer < ActiveRecord::Base
 	before_validation :squish_whitespace
 	validates :image, :format => URI::regexp(%w(http https))
 	validate :dates_make_sense 
+	geocoded_by :full_address
+	after_validation :geocode
 
 	def dates_make_sense
 		errors.add(:start_date, "The given dates don't make sense.") if (start_date < Date.today) || (start_date > end_date)
@@ -15,4 +17,8 @@ class Offer < ActiveRecord::Base
 		self.line2 = self.line2.squish()
 		self.city = self.city.squish()
 	end
+
+	def full_address
+		return (self.line1 + " " + self.line2 + " " + self.city + " " + self.state).squish()
+	end		
 end
