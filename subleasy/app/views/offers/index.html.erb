@@ -1,11 +1,13 @@
-<div class="wrapper" style="text-align:center;width:800px;margin:auto;">
+<div class="wrapper" style="text-align:center;">
 	<h1>Offer Listing</h1>
-	<div style='width: 800px;'>
-	  <div id="map" style='width: 800px; height: 400px;'></div>
+	<div style='width:800px;text-align:center;margin:auto;'>
+	  <div id="map-container">
+	  	<div id="map-canvas"></div>
+	  </div>
 	</div>
-	<h3><%= link_to 'Post a new offer', new_offer_path %></h3>
+	<p class="item"><br><br></p>
  	<% @offers.each do |offer| %>
-	<div class="box" style="text-align:center;">
+	<div class="box" id=<%= offer.id %> style="text-align:center;">
 		<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;">
 			<div class="center" style="text-align:center;">
 				<h3><a><%= link_to offer.line1 + ' ' + offer.line2, offer_path(offer.id) %></a></h3>
@@ -18,25 +20,64 @@
 </div>
 
 <script type="text/javascript">
-	handler = Gmaps.build('Google');
-	handler.buildMap({
-	    provider: {
-	      disableDefaultUI: true,
-	      center: {lat: 42.407484, lng: -71.119023},
-	      zoom: 14
-	    },
-	    internal: {
-	      id: 'map'
-	    },
-	  },
-	  function(){
-	    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-	    console.log(markers)
+	// handler = Gmaps.build('Google');
+	// handler.buildMap({
+	//     provider: {
+	//       disableDefaultUI: true,
+	//       center: {lat: 42.407484, lng: -71.119023},
+	//       zoom: 14
+	//     },
+	//     internal: {
+	//       id: 'map'
+	//     },
+	//   },
+	var map;
+	function initialize() {
+	  var mapOptions = {
+	    zoom: 14,
+	    center: new google.maps.LatLng(42.407484, -71.119023)
+	  };
+	  map = new google.maps.Map(document.getElementById('map-canvas'),
+	      mapOptions);
+  	<% @offers.each do |offer| %>
+  	  var marker = new google.maps.Marker({
+    	position: new google.maps.LatLng(<%= offer.latitude %>, <%= offer.longitude %>),
+    	map: map,
+    	infowindow: <%= offer.id %>,
+    	url: "<%= "#" + offer.id.to_s %>"
+   	  });
+   	  google.maps.event.addListener(marker, 'click', function() {
+   	      window.location.href = "/offers" + "<%= "#" + offer.id.to_s %>";
+   	  });
+
+   	  console.log(marker)
+   	<% end %>
+   	 	  var marker = new google.maps.Marker({
+   	    position: new google.maps.LatLng(-25.363882,131.044922),
+   	    map: map,
+   	    title: 'Hello World!'
+   	});
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+	 //    for (var i = 0; i < markers.length; i++) {
+		//     google.maps.event.addListener(markers[i], 'click', function() {
+		//     		console.log(i + "click")
+		//             window.location.href = "#" + markers[i].infowindow
+		//         })
+		// }
 	    // handler.bounds.extendWith(markers);
 	    // handler.fitMapToBounds();
-	  }
+	//   }
 
-	);
+	// );
+	// function createMarker(lat, lng, infowindow, map) {
+	// 	marker = new google.maps.Marker({
+	// 		    	lat: lat,
+	// 		    	lng: lng,
+	// 		    	map: map,
+	// 		    	infowindow: infowi
+	// 		    }
 </script>
 
 <!-- var pinColor = "FE7569";

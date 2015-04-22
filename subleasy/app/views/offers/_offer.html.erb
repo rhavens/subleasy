@@ -1,21 +1,20 @@
-<div class="center" style="text-align:center;">	
+<div class="ui center" style="text-align:center;">	
 	<img src="<%= offer.image %>" alt="house" height=250px></img>
 </div>
 <h3>Address</h3>
-<p><%= offer.line1 %> <%= offer.line2 %></p>
-<p><%= offer.city %>, <%= offer.state %>. <%= offer.zip %></p>
+<p class="item"><%= offer.line1 %> <%= offer.line2 %></p>
+<p class="item"><%= offer.city %>, <%= offer.state %>. <%= offer.zip %></p>
 <h3>Rental information</h3>
-<p>$<%= offer.rent %>/mo</p>
-<p><%= offer.start_date %> - <%= offer.end_date %></p>
+<p class="item">$<%= offer.rent %>/mo</p>
+<p class="item"><%= offer.start_date.strftime('%a %d %b %Y') %> - <%= offer.end_date.strftime('%a %d %b %Y') %></p>
 <h3>Utility information</h3>
-<p>Water: <%= offer.water ? 'Yes' : 'No' %></p>
-<p>Internet: <%= offer.internet ? 'Yes' : 'No' %></p>
-<p>Electric: <%= offer.electric ? 'Yes' : 'No' %></p>
-<p>Heat: <%= offer.heat ? 'Yes' : 'No' %></p>
-<p>Gas: <%= offer.gas ? 'Yes' : 'No' %></p>
+<p class="item">Water: <%= offer.water ? 'Yes' : 'No' %></p>
+<p class="item">Internet: <%= offer.internet ? 'Yes' : 'No' %></p>
+<p class="item">Electric: <%= offer.electric ? 'Yes' : 'No' %></p>
+<p class="item">Heat: <%= offer.heat ? 'Yes' : 'No' %></p>
+<p class="item">Gas: <%= offer.gas ? 'Yes' : 'No' %></p>
 <h3>Other</h3>
-<p>Washer/dryer? <%= offer.washdry ? 'Yes' : 'No' %></p>
-<p>Air conditioning? <%= offer.aircond ? 'Yes' : 'No' %></p>
-<p>Handicap? <%= offer.handicap ? 'Yes' : 'No' %></p>
-<p>Parking? <%= offer.parking ? 'Yes' : 'No' %></p>
-<p>People interested in this sublease: <%= offer.interested %></p>
+<p class="item">Washer/dryer? <%= offer.washdry ? 'Yes' : 'No' %></p>
+<p class="item">Air conditioning? <%= offer.aircond ? 'Yes' : 'No' %></p>
+<p class="item">Handicap? <%= offer.handicap ? 'Yes' : 'No' %></p>
+<p class="item">Parking? <%= offer.parking ? 'Yes' : 'No' %></p>

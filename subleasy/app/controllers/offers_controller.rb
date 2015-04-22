@@ -2,11 +2,6 @@ class OffersController < ApplicationController
 
 	def index
 		@offers = Offer.all
-		@hash = Gmaps4rails.build_markers(@offers) do |offer, marker|
-		  marker.lat offer.latitude
-		  marker.lng offer.longitude
-		  marker.infowindow (offer.line1 + " " + offer.line2).squish()
-		end
 	end
 
 	def show
@@ -24,11 +19,11 @@ class OffersController < ApplicationController
 	def create
 		@offer = current_user.offers.build(offer_params)
 
-		if @offer.save!
-			notice = "Success! Your offer has been posted."
+		if @offer.save
+			flash[:notice] = "Success! Your offer has been posted."
 			redirect_to @offer
 		else
-			error = "Failed to post offer. Correct any errors in your form and try again."
+			flash[:alert] = "Failed to post offer. Correct any errors in your form and try again."
 			render :new
 		end
 	end
@@ -40,7 +35,7 @@ class OffersController < ApplicationController
 			flash[:notice] = "Success! Your offer has been updated."
 			redirect_to @offer
 		else
-			flash[:error] = "Failed to post offer. Correct any errors in your form and try again."
+			flash[:alert] = "Failed to post offer. Correct any errors in your form and try again."
 			render :edit
 		end
 	end

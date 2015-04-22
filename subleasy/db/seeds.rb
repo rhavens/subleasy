@@ -1,7 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Offer.create("image"=>"http://upload.wikimedia.org/wikipedia/commons/4/48/Hanover_House_(Clemson).JPG", "line1"=>"5 Sunset Lane", "line2"=>"", "city"=>"Port Washington", "state"=>"NY", "zip"=>11050, "rent"=>800, "start_date"=>Mon, 01 Jun 2015, "end_date"=>Sat, 15 Aug 2015, "water"=>false, "electric"=>true, "gas"=>false, "heat"=>false, "internet"=>false, "washdry"=>true, "aircond"=>false, "handicap"=>false, "parking"=>false, "interested"=>0, "user_id"=>3, "latitude"=>40.8330569, "longitude"=>-73.679143)
+Offer.create("email"=>"ryan.hav@tufts.edu", "offers_id"=>nil, "firstname"=>nil, "lastname"=>nil, "school"=>nil)
+Offer.create("email"=>"ryan.havens@tufts.edu", "offers_id"=>nil, "firstname"=>nil, "lastname"=>nil, "school"=>nil)
