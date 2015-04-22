@@ -5,6 +5,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
+  config.secret_token = ENV["SECRET_TOKEN"]
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
