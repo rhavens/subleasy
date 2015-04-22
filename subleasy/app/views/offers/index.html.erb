@@ -20,64 +20,122 @@
 </div>
 
 <script type="text/javascript">
-	// handler = Gmaps.build('Google');
-	// handler.buildMap({
-	//     provider: {
-	//       disableDefaultUI: true,
-	//       center: {lat: 42.407484, lng: -71.119023},
-	//       zoom: 14
-	//     },
-	//     internal: {
-	//       id: 'map'
-	//     },
-	//   },
+	//-------------------------------------------//
+	//		Google maps stuff
+	//
 	var map;
+	var markers = [];
 	function initialize() {
-	  var mapOptions = {
-	    zoom: 14,
-	    center: new google.maps.LatLng(42.407484, -71.119023)
-	  };
-	  map = new google.maps.Map(document.getElementById('map-canvas'),
+	 	var mapOptions = {
+	    	zoom: 14,
+		    center: new google.maps.LatLng(42.407484, -71.119023)
+	  	};
+	  	map = new google.maps.Map(document.getElementById('map-canvas'),
 	      mapOptions);
-  	<% @offers.each do |offer| %>
-  	  var marker = new google.maps.Marker({
-    	position: new google.maps.LatLng(<%= offer.latitude %>, <%= offer.longitude %>),
-    	map: map,
-    	infowindow: <%= offer.id %>,
-    	url: "<%= "#" + offer.id.to_s %>"
-   	  });
-   	  google.maps.event.addListener(marker, 'click', function() {
-   	      window.location.href = "/offers" + "<%= "#" + offer.id.to_s %>";
-   	  });
-
-   	  console.log(marker)
-   	<% end %>
-   	 	  var marker = new google.maps.Marker({
-   	    position: new google.maps.LatLng(-25.363882,131.044922),
-   	    map: map,
-   	    title: 'Hello World!'
-   	});
+		generateMarkersByParameter("rent")
 	}
 
-	google.maps.event.addDomListener(window, 'load', initialize);
-	 //    for (var i = 0; i < markers.length; i++) {
-		//     google.maps.event.addListener(markers[i], 'click', function() {
-		//     		console.log(i + "click")
-		//             window.location.href = "#" + markers[i].infowindow
-		//         })
-		// }
-	    // handler.bounds.extendWith(markers);
-	    // handler.fitMapToBounds();
-	//   }
+	function generateMarkersByParameter(parameter) {
+		deleteMarkers()
+		sortByKey(offers, parameter)
+		minP = offers[0][parameter]
+		maxP = offers[offers.length-1][parameter]
+		for (var i = 0; i < offers.length; i++) {
+	  	  	var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + hsv2rgb(offers[i][parameter], minP, maxP),
+	   	        new google.maps.Size(21, 34),
+	   	        new google.maps.Point(0,0),
+	   	        new google.maps.Point(10, 34));
+	  	  	var marker = new google.maps.Marker({
+		    	position: new google.maps.LatLng(offers[i].latitude, offers[i].longitude),
+		    	map: map,
+		    	icon: pinImage,
+		    	url: "#" + offers[i].id.toString(),
+		    	title: offers[i].line1
+	   	  	});
+	   	  	console.log(marker.url);
+		   	google.maps.event.addListener(marker, 'click', function() {
+		   		console.log(marker.url)
+		   	    window.location.href = this.url;
+		   	});
+		   	markers.push(marker)
+   		}
+   	}
 
-	// );
-	// function createMarker(lat, lng, infowindow, map) {
-	// 	marker = new google.maps.Marker({
-	// 		    	lat: lat,
-	// 		    	lng: lng,
-	// 		    	map: map,
-	// 		    	infowindow: infowi
-	// 		    }
+   	function deleteMarkers() {
+	   	for (var i = 0; i < markers.length; i++) {
+	   	  markers[i].setMap(null);
+	   	}
+	   	markers = []
+   	}
+
+	function componentToHex(c) {
+	    var hex = c.toString(16);
+	    return hex.length == 1 ? "0" + hex : hex;
+	}
+
+	// function rainbowColor(val, min, max)
+	// {
+	// 	var hue = Math.floor((max - val) * 120 / max);  // go from green to red
+	// 	var saturation = Math.abs(val - ((max - min)/2))/((max - min)/2);   // fade to white as it approaches 50
+	//     // var i = ((val - min) * (max - min) / (max - min));
+	//     // var r = Math.round(Math.sin(0.024 * i + 0) * 127 + 128);
+	//     // var g = Math.round(Math.sin(0.024 * i + 2) * 127 + 128);
+	//     // var b = Math.round(Math.sin(0.024 * i + 4) * 127 + 128);
+	//     // return componentToHex(r) + componentToHex(g) + componentToHex(b);
+	// }
+
+	var hsv2rgb = function(val, min, max) {
+	  // adapted from http://schinckel.net/2012/01/10/hsv-to-rgb-in-javascript/
+	  var h = Math.floor(((max - min) - (val - min)) * 120 / (max - min));
+      var s = Math.abs((val - min) - ((max - min)/2))/((max - min)/2);
+      var v = 1;
+	  var rgb, i, data = [];
+	  if (s === 0) {
+	    rgb = [v,v,v];
+	  } else {
+	    h = h / 60;
+	    i = Math.floor(h);
+	    data = [v*(1-s), v*(1-s*(h-i)), v*(1-s*(1-(h-i)))];
+	    switch(i) {
+	      case 0:
+	        rgb = [v, data[2], data[0]];
+	        break;
+	      case 1:
+	        rgb = [data[1], v, data[0]];
+	        break;
+	      case 2:
+	        rgb = [data[0], v, data[2]];
+	        break;
+	      case 3:
+	        rgb = [data[0], data[1], v];
+	        break;
+	      case 4:
+	        rgb = [data[2], data[0], v];
+	        break;
+	      default:
+	        rgb = [v, data[0], data[1]];
+	        break;
+	    }
+	  }
+	  return rgb.map(function(x){
+	    return ("0" + Math.round(x*255).toString(16)).slice(-2);
+	  }).join('');
+	};
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+	//
+	//
+	//-------------------------------------------//
+	//		Sorting, filtering, other features with our data
+	//
+	offers = <%=raw @offers.to_json %>
+
+	function sortByKey(array, key) {
+	    return array.sort(function(a, b) {
+	        var x = a[key]; var y = b[key];
+	        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+	    });
+	}
 </script>
 
 <!-- var pinColor = "FE7569";
