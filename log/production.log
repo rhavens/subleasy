@@ -230,3 +230,31 @@ I, [2015-04-22T06:40:12.654148 #3327]  INFO -- : Processing by Devise::SessionsC
 I, [2015-04-22T06:40:12.657261 #3327]  INFO -- :   Rendered devise/shared/_links.html.erb (0.2ms)
 I, [2015-04-22T06:40:12.657368 #3327]  INFO -- :   Rendered devise/sessions/new.html.erb within layouts/application (1.9ms)
 I, [2015-04-22T06:40:12.658357 #3327]  INFO -- : Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+I, [2015-04-22T07:18:41.974382 #5415]  INFO -- : Processing by OffersController#index as HTML
+D, [2015-04-22T07:18:41.987532 #5415] DEBUG -- :   [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+D, [2015-04-22T07:18:42.002676 #5415] DEBUG -- :   [1m[35mOffer Load (0.7ms)[0m  SELECT "offers".* FROM "offers"
+I, [2015-04-22T07:18:42.004832 #5415]  INFO -- :   Rendered offers/index.html.erb within layouts/application (4.5ms)
+I, [2015-04-22T07:18:42.008012 #5415]  INFO -- : Completed 200 OK in 33ms (Views: 8.5ms | ActiveRecord: 5.0ms)
+I, [2015-04-22T07:18:47.910832 #5415]  INFO -- : Processing by OffersController#index as HTML
+D, [2015-04-22T07:18:47.912308 #5415] DEBUG -- :   [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+D, [2015-04-22T07:18:47.914042 #5415] DEBUG -- :   [1m[35mOffer Load (0.3ms)[0m  SELECT "offers".* FROM "offers"
+I, [2015-04-22T07:18:47.914402 #5415]  INFO -- :   Rendered offers/index.html.erb within layouts/application (0.9ms)
+I, [2015-04-22T07:18:47.915726 #5415]  INFO -- : Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.6ms)
+I, [2015-04-22T10:58:08.959018 #5415]  INFO -- : Processing by OffersController#index as HTML
+D, [2015-04-22T10:58:08.960214 #5415] DEBUG -- :   [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+D, [2015-04-22T10:58:08.961410 #5415] DEBUG -- :   [1m[35mOffer Load (0.3ms)[0m  SELECT "offers".* FROM "offers"
+I, [2015-04-22T10:58:08.961937 #5415]  INFO -- :   Rendered offers/index.html.erb within layouts/application (1.0ms)
+I, [2015-04-22T10:58:08.962997 #5415]  INFO -- : Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+I, [2015-04-22T10:58:13.106308 #5415]  INFO -- : Processing by OffersController#index as HTML
+D, [2015-04-22T10:58:13.107413 #5415] DEBUG -- :   [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+D, [2015-04-22T10:58:13.109072 #5415] DEBUG -- :   [1m[35mOffer Load (0.4ms)[0m  SELECT "offers".* FROM "offers"
+I, [2015-04-22T10:58:13.109381 #5415]  INFO -- :   Rendered offers/index.html.erb within layouts/application (1.2ms)
+I, [2015-04-22T10:58:13.110488 #5415]  INFO -- : Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.8ms)
+I, [2015-04-22T10:58:20.573916 #5415]  INFO -- : Processing by HomeController#index as HTML
+D, [2015-04-22T10:58:20.575024 #5415] DEBUG -- :   [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+I, [2015-04-22T10:58:20.589965 #5415]  INFO -- :   Rendered home/index.html.erb within layouts/application (0.6ms)
+I, [2015-04-22T10:58:20.591697 #5415]  INFO -- : Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.3ms)
+I, [2015-04-22T10:58:20.601075 #5415]  INFO -- : Processing by HomeController#index as HTML
+D, [2015-04-22T10:58:20.602653 #5415] DEBUG -- :   [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+I, [2015-04-22T10:58:20.604934 #5415]  INFO -- :   Rendered home/index.html.erb within layouts/application (0.5ms)
+I, [2015-04-22T10:58:20.606759 #5415]  INFO -- : Completed 200 OK in 6ms (Views: 3.3ms | ActiveRecord: 0.4ms)
