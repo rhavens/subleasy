@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+	before_action :correct_user, only: [:edit, :update, :destroy]
 
 	def index
 		@offers = Offer.all
@@ -53,5 +54,10 @@ class OffersController < ApplicationController
 					:line1,:line2,:city,:state,:zip,:rent,:start_date,
 					:end_date,:water,:electric,:gas,:heat,:internet,:washdry,
 					:aircond,:handicap,:parking,:interested)
+		end
+
+		def correct_user
+			@user = Offer.find(params[:id]).user
+			redirect_to(:home) unless @user == current_user
 		end
 end

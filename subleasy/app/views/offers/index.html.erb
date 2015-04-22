@@ -1,4 +1,4 @@
-<div class="wrapper" style="text-align:center;">
+<div class="ui wrapper" style="text-align:center;">
 	<h1>Offer Listing</h1>
 	<div style='width:800px;text-align:center;margin:auto;'>
 	  <div id="map-container">
@@ -6,13 +6,42 @@
 	  </div>
 	</div>
 	<p class="item"><br><br></p>
+	<div class="ui top attached tabular menu" id="filter-tab">
+		<p class="active item">Filter by:</p>
+	  	<a onmousedown="togText('rent')" class="active item" id="rent">
+	    	Rent
+	  	</a>
+	  	<a onmousedown="togText('date')" class="item" id="date">
+	    	Available Dates
+	 	</a>
+	</div>
+	<div class="ui bottom attached segment" id="filter-content">
+		<p class="item"><br/></p>
+		<div class="ui" style="display:block" id="c-rent">
+			<p class="item">Markers on the map are colored by monthly rent. Low rent is greenish, high rent is reddish.<br/><br/>Filter results by max rent: <input class="item" type="number" id="maxrent" value=0><br/></p>
+			<div class="ui blue button"><p id="maxrentbutton" class="item">Go</p></div>
+		</div>
+		<div class="ui" style="display:none" id="c-date">
+			<p class="item">Remove listings from the map that don't fit your schedule. Markers on the map are colored by monthly rent.</p>
+			<p class="item">Start date: <%= date_field_tag 'start-date', nil, class: "item" %></p>
+			<p class="item">End date: <%= date_field_tag 'end-date', nil, class: "item" %></p>
+			<div class="ui blue button"><p id="datebutton" class="item">Go</p></div>
+		</div>
+		<p class="item"><br/></p>
+	</div>
+	<p class="item"><br><br></p>
  	<% @offers.each do |offer| %>
-	<div class="box" id=<%= offer.id %> style="text-align:center;">
-		<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;">
-			<div class="center" style="text-align:center;">
-				<h3><a><%= link_to offer.line1 + ' ' + offer.line2, offer_path(offer.id) %></a></h3>
-				<h3><a><%= link_to offer.user.email, offer.user %></a></h3>
+ 	<div id="<%= offer.id %>modal" class="ui modal">
+ 		<i class="close icon"></i>
+		<div class="box" style="text-align:center;">
+			<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;">
+				<%= render partial: 'offer', locals: {offer: offer} %>
+				<p class="item"><br/></p>
 			</div>
+		</div>
+	</div>
+	<div class="box" id=<%= offer.id %> style="text-align:center;">
+		<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;border-bottom-width:0px">
 			<%= render partial: 'offer', locals: {offer: offer} %>
 		</div>
 	</div>
@@ -20,6 +49,9 @@
 </div>
 
 <script type="text/javascript">
+	function test(value) {
+		console.log("test " + value)
+	}
 	//-------------------------------------------//
 	//		Google maps stuff
 	//
@@ -32,30 +64,28 @@
 	  	};
 	  	map = new google.maps.Map(document.getElementById('map-canvas'),
 	      mapOptions);
-		generateMarkersByParameter("rent")
+		generateMarkersByParameter(offers, "rent")
 	}
 
-	function generateMarkersByParameter(parameter) {
+	function generateMarkersByParameter(array, parameter) {
 		deleteMarkers()
-		sortByKey(offers, parameter)
-		minP = offers[0][parameter]
-		maxP = offers[offers.length-1][parameter]
-		for (var i = 0; i < offers.length; i++) {
-	  	  	var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + hsv2rgb(offers[i][parameter], minP, maxP),
+		sortByKey(array, parameter)
+		minP = array[0][parameter]
+		maxP = array[array.length-1][parameter]
+		for (var i = 0; i < array.length; i++) {
+	  	  	var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + hsv2rgb(array[i][parameter], minP, maxP),
 	   	        new google.maps.Size(21, 34),
 	   	        new google.maps.Point(0,0),
 	   	        new google.maps.Point(10, 34));
 	  	  	var marker = new google.maps.Marker({
-		    	position: new google.maps.LatLng(offers[i].latitude, offers[i].longitude),
+		    	position: new google.maps.LatLng(array[i].latitude, array[i].longitude),
 		    	map: map,
 		    	icon: pinImage,
-		    	url: "#" + offers[i].id.toString(),
-		    	title: offers[i].line1
+		    	url: "#" + array[i].id.toString(),
+		    	title: array[i].line1
 	   	  	});
-	   	  	console.log(marker.url);
 		   	google.maps.event.addListener(marker, 'click', function() {
-		   		console.log(marker.url)
-		   	    window.location.href = this.url;
+		   	    $(this.url + 'modal').modal('show');
 		   	});
 		   	markers.push(marker)
    		}
@@ -136,6 +166,27 @@
 	        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
 	    });
 	}
+
+	active = "rent"
+	function togText(filter) {
+		if (filter != active) {
+			$("#"+filter).addClass("active")
+			$("#"+active).removeClass("active")
+			$("#c-"+filter).css('display','block')
+			$("#c-"+active).css('display','none')
+			active = filter
+		}
+	}
+
+	$(document).ready(function() {
+		$('#maxrentbutton').click(function() {
+			generateMarkersByParameter(offers.filter(function(item){return item["rent"] <= $('#maxrent').val()}), "rent");
+		})
+		$('#datebutton').click(function() {
+			generateMarkersByParameter(offers.filter(function(item){return ((item["start_date"] <= $('#start-date').val()) && (item["end_date"] >= $('#end-date').val()))}), "rent");
+		})
+	});
+
 </script>
 
 <!-- var pinColor = "FE7569";
