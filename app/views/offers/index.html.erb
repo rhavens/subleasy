@@ -116,8 +116,8 @@
 
 	var hsv2rgb = function(val, min, max) {
 	  // adapted from http://schinckel.net/2012/01/10/hsv-to-rgb-in-javascript/
-	  var h = Math.floor(((max - min) - (val - min)) * 120 / (max - min));
-      var s = Math.abs((val - min) - ((max - min)/2))/((max - min)/2);
+	  var h = Math.floor(((max - min) - (val - min)) * 120 / (max - min + 0.001));
+      var s = Math.abs((val - min) - ((max - min)/2))/((max - min + 0.001)/2);
       var v = 1;
 	  var rgb, i, data = [];
 	  if (s === 0) {
