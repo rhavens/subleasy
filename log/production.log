@@ -258,3 +258,9 @@ I, [2015-04-22T10:58:20.601075 #5415]  INFO -- : Processing by HomeController#in
 D, [2015-04-22T10:58:20.602653 #5415] DEBUG -- :   [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
 I, [2015-04-22T10:58:20.604934 #5415]  INFO -- :   Rendered home/index.html.erb within layouts/application (0.5ms)
 I, [2015-04-22T10:58:20.606759 #5415]  INFO -- : Completed 200 OK in 6ms (Views: 3.3ms | ActiveRecord: 0.4ms)
+I, [2015-04-22T11:34:18.517508 #7540]  INFO -- : Processing by OffersController#index as HTML
+I, [2015-04-22T11:34:18.527425 #7540]  INFO -- : Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms)
+I, [2015-04-22T11:34:18.550083 #7540]  INFO -- : Processing by Devise::SessionsController#new as HTML
+I, [2015-04-22T11:34:18.600516 #7540]  INFO -- :   Rendered devise/shared/_links.html.erb (1.4ms)
+I, [2015-04-22T11:34:18.600630 #7540]  INFO -- :   Rendered devise/sessions/new.html.erb within layouts/application (13.8ms)
+I, [2015-04-22T11:34:18.602436 #7540]  INFO -- : Completed 200 OK in 52ms (Views: 18.4ms | ActiveRecord: 8.9ms)

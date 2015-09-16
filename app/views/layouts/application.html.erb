@@ -9,21 +9,22 @@
   <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 </head>
 <body>
-	<div class="ui page grid">
-        <nav class="ui inverted menu navbar page grid">
-            <div class="left menu">
-            	<div style="background-color:#FFF;">
-                <%= link_to (image_tag "SubleasyLogo.png", :class=>"logo"), :home, :class=>"item zero-pad" %>
-            </div>
-            </div>
-            <div class="right menu" style="margin-top:10px;">
-                <%= link_to '<i class="icon shop"></i>Sublets'.html_safe, :offers, 'data-no-turbolink' => true, :class=>"item" %>
-                <%= link_to '<i class="icon home"></i>New Listing'.html_safe, new_offer_path, :class=>"item" %>
-                <% if user_signed_in? %>
-                	<%= link_to '<i class="icon setting"></i>My Listings'.html_safe, current_user, :class=>"item" %>
-                <% end %>
-            </div>
-        </nav>
+    <nav class="ui inverted menu navbar page grid fixed">
+        <div class="left menu">
+        	<div style="background-color:#FFF;">
+            <%= link_to (image_tag "SubleasyLogo.png", :class=>"logo"), :home, :class=>"item zero-pad" %>
+        	</div>
+        </div>
+        <div class="right menu" style="margin-top:10px;">
+            <%= link_to '<i class="icon shop"></i>Sublets'.html_safe, :offers, 'data-no-turbolink' => true, :class=>"item" %>
+            <%= link_to '<i class="icon home"></i>New Listing'.html_safe, new_offer_path, :class=>"item" %>
+            <% if user_signed_in? %>
+            	<%= link_to '<i class="icon setting"></i>My Listings'.html_safe, current_user, :class=>"item" %>
+            <% end %>
+        </div>
+    </nav>
+    
+    <div class="ui page grid notice-bar">
 		<p class="ui item">
 			<% if user_signed_in? %>
 			  Logged in as <strong><%= current_user.email %></strong>.
@@ -41,9 +42,11 @@
 				<div class="ui item error message alert alert-danger"><h3 class="item">Error</h3><p class="item"><%= flash[:alert] %></p></div>
 		<% end %>
 		</p>
+	</div>
+	<div class="ui page grid">
 		<%= yield %>
 		<div class="footer" style="height:150px;">
 		</div>
-	</div></div>
+	</div>
 </body>
 </html>

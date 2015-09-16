@@ -14,25 +14,27 @@
  *= require_self
  */
 
- #map-container {
-   height: 500px;
-   border-radius: 16px 16px;
-   border-color: #fff;
-   border-style: solid;
-   box-shadow: 2px 2px 10px #B1B1B1;
-   margin-top: 25px;
-   border-width: 7px;
- }
+#map-container {
+	height: 500px;
+	border-radius: 16px 16px;
+	border-color: #fff;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+	margin-top: 25px;
+	border-width: 7px;
+}
 
- #map-canvas {
-   height: 484px;
-   width: 100%;
- }
+#map-canvas {
+	height: 484px;
+	width: 100%;
+}
 
 body{
 	font-family: 'Open Sans', sans-serif;
-	margin-bottom: 60px;
 }
+
+html { height:100%; }
+body { position:absolute; top:0; bottom:0; right:0; left:0; }
 
 .ui .message{
 	padding-top: 30px !important;
@@ -45,7 +47,6 @@ body{
 
 nav {
 	background-color:#003366 !important;
-	margin-top: 50px !important;
 }
 
 .nomargin {
@@ -64,4 +65,9 @@ nav {
 
 .zero-pad {
 	padding:0 !important;
+}	
+
+.notice-bar
+{
+	padding-top: 70px !important;
 }
