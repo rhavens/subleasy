@@ -27,6 +27,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # devise
 gem 'devise'
 
+# auth
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # semantic
 gem 'semantic-ui-sass'
 
