@@ -32,7 +32,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'	
 
 # semantic
-gem 'semantic-ui-sass'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 # geocoding
 gem 'geocoder'

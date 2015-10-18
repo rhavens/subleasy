@@ -5834,8 +5834,8 @@ a.ui.inverted.yellow.header:hover {
 
 @font-face {
   font-family: 'Icons';
-  src: url("packages/semantic_ui-css/themes/default/assets/fonts/icons.eot");
-  src: url("packages/semantic_ui-css/themes/default/assets/fonts/icons.eot?") format('embedded-opentype'), url("packages/semantic_ui-css/themes/default/assets/fonts/icons.woff2") format('woff'), url("packages/semantic_ui-css/themes/default/assets/fonts/icons.woff") format('woff'), url("packages/semantic_ui-css/themes/default/assets/fonts/icons.ttf") format('truetype'), url("packages/semantic_ui-css/themes/default/assets/fonts/icons.svg") format('svg');
+  src: url("icons.eot");
+  src: url("icons.eot?") format('embedded-opentype'), url("icons.woff2") format('woff'), url("icons.woff") format('woff'), url("icons.ttf") format('truetype'), url("Zicons.svg") format('svg');
   font-style: normal;
   font-weight: normal;
   font-variant: normal;

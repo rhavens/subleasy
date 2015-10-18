@@ -1,1 +1,12 @@
-@import "semantic-ui";
+@import 'semantic-ui';
+
+@font-face {
+	font-family: 'Icons';
+	src: font-url("icons.eot");
+	src: font-url("icons.eot?") format('embedded-opentype'), font-url("icons.woff2") format('woff'), font-url("icons.woff") format('woff'), font-url("icons.ttf") format('truetype'), font-url("Zicons.svg") format('svg');
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-decoration: inherit;
+	text-transform: none;
+}

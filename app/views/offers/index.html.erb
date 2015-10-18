@@ -25,7 +25,7 @@
 			<div class="ui blue button"><p id="maxrentbutton" class="item">Go</p></div>
 		</div>
 		<div class="ui" style="display:none" id="c-date">
-			<p class="item">Remove listings from the map that don't fit your schedule. Markers on the map are colored by monthly rent.</p>
+			<p class="item">Remove offers from the map that don't fit your schedule. Markers on the map are colored by monthly rent.</p>
 			<p class="item">Start date: <%= date_field_tag 'start-date', nil, class: "item" %></p>
 			<p class="item">End date: <%= date_field_tag 'end-date', nil, class: "item" %></p>
 			<div class="ui blue button"><p id="datebutton" class="item">Go</p></div>
@@ -43,11 +43,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="box" id=<%= offer.id %> style="text-align:center;">
+	<!-- <div class="box" id=<%= offer.id %> style="text-align:center;">
 		<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;border-bottom-width:1px;border-top-width:1px;background-color:#fff;">
 			<%= render partial: 'offer', locals: {offer: offer} %>
 		</div>
-	</div>
+	</div> -->
 	<% end %>
 </div>
 

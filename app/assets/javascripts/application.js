@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require underscore
+//= require semantic-ui
 //= require gmaps/google
 //= require_tree .

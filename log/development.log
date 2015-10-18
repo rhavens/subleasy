@@ -1604,3 +1604,1180 @@ Processing by OffersController#index as HTML
   Rendered offers/_offer.html.erb (0.3ms)
   Rendered offers/index.html.erb within layouts/application (10.2ms)
 Completed 200 OK in 136ms (Views: 132.9ms | ActiveRecord: 1.5ms)
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 20]]
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 820ms (Views: 754.8ms | ActiveRecord: 2.7ms)
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"UGicD33odUnpZtaSFeGkwuBtSTO111Y8hUjzIybhFa7Yj/w8cecsWBUBidwROMlOBNHS71qhst30fFch2+Fbtw=="}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 20]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Completed 302 Found in 108ms (ActiveRecord: 0.9ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (243.4ms)
+Completed 200 OK in 329ms (Views: 324.8ms | ActiveRecord: 0.0ms)
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQDtp_93VEIVz3PzX_tU6-MfSGNqasj1Um1I_0qAj0hEPmo52dlmQJRKLnm9F35OqEow6f52pZAzZg0vBDOC9Ell9X6aFNVm2J8xAGiO6E1sVIXFs3opPjZw8EZVLqvwnEdZWpKhztxRzd-WjAFZMIbhQDViJJTVHABz7eU9oEdZqitT4QOS__mSw2FOlmZk7uYezEr0vp8Nv4leroYxZdkpS5qMUhbfbKr9ZpYuwIAT6GKphRlvEro9XNrskcVuR0zjnLT-EBP23ANAuxrs4vD2Mi9u6WV72Ylg9LuAIdPjn5mKETncNvo7UBv67UmvLKu5mEEz_cC0sg2A5VIIUooz", "state"=>"bfd5927402ec44a67c69be5f0f4e07e69875a0ea4449b63c"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "473418502829853"]]
+################################# USER LOGGED IN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (27.5ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4  [["current_sign_in_at", "2015-10-18 11:54:42.472690"], ["sign_in_count", 2], ["updated_at", "2015-10-18 11:54:42.473523"], ["id", 20]]
+  [1m[36m (10.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Completed 302 Found in 47ms (ActiveRecord: 38.4ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 20]]
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 104ms (Views: 101.3ms | ActiveRecord: 0.5ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 20]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 78ms (Views: 76.3ms | ActiveRecord: 0.3ms)
+Processing by Devise::RegistrationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fF6loTWjgc5nW4IL7RPhwJekfWzy5DsEyT912xIp2hhNTtbq09AtQaGUEktoUGc3DYqJUhLhqIf7KHOytEIaDA=="}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 20]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mOffer Load (0.6ms)[0m  SELECT "offers".* FROM "offers" WHERE "offers"."user_id" = $1  [["user_id", 20]]
+  [1m[36mSQL (0.7ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 20]]
+  [1m[35m (16.4ms)[0m  COMMIT
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Completed 302 Found in 135ms (ActiveRecord: 20.4ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 98ms (Views: 97.3ms | ActiveRecord: 0.0ms)
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQAxtqyck-m4eoH6IA1bdVCvew-iL4N8HaUgz5N69JyPrMRsXTygxIFMVw312Rc-tSk9EEXVWEOUAgtZsLlscb24oQ2igSmyLD-Gcrr1UN7wmdY85go1zhdzOLzRnOWMJh72_JtrybWopbr7w_GCAFXGOqtfecU8oU_Nv1SqSXfHsxwuQ6w7GxWskJtOM1oDnfVawb6rI4DhiI_6wjxxiE0qNzUjcgigo74mSxCblNcQJN9UcuJM6EEPwelYWMfVtvb3XGcScGH_0FVcfSh6ovUspIkitHtufqrnyBmdvCtGDY_eT2zHNv2m-w8RPwcujjmnDHaQv18NS6GAPj8kvhRA", "state"=>"7305b611708004ca23969a632dd5bb50ca0ae77a538c73ca"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1[0m  [["provider", "facebook"], ["uid", "473418502829853"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ryan.d.havens@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "provider", "uid", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Ryan Havens"], ["provider", "facebook"], ["uid", "473418502829853"], ["email", "ryan.d.havens@gmail.com"], ["encrypted_password", "$2a$10$EsqSiNsC6R2PbyuElRsfEeV8WyN3I9slKM8zDB1lbqnyqNnqtkgOC"], ["created_at", "2015-10-18 11:55:02.271941"], ["updated_at", "2015-10-18 11:55:02.271941"]]
+  [1m[36m (12.3ms)[0m  [1mCOMMIT[0m
+################################# USER LOGGED IN
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-10-18 11:55:02.286326"], ["current_sign_in_at", "2015-10-18 11:55:02.286326"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-10-18 11:55:02.287008"], ["id", 21]]
+  [1m[35m (8.5ms)[0m  COMMIT
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Completed 302 Found in 122ms (ActiveRecord: 23.1ms)
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 94ms (Views: 92.0ms | ActiveRecord: 0.4ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 86ms (Views: 85.0ms | ActiveRecord: 0.2ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 99ms (Views: 96.8ms | ActiveRecord: 0.3ms)
+Processing by Devise::RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8NBYXLXYvnBDeHvZ21QiN0ULi0GlYnPuklE2qM5AohRBCQk9mMChi3zw9lr4HTM0z9HNj3JeTFUWd5LJ0/kHzQ==", "user"=>{"email"=>"ryan.d.havens@gmail.com"}, "commit"=>"Update"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 223ms (Views: 97.9ms | ActiveRecord: 0.6ms)
+Processing by Devise::RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8NBYXLXYvnBDeHvZ21QiN0ULi0GlYnPuklE2qM5AohRBCQk9mMChi3zw9lr4HTM0z9HNj3JeTFUWd5LJ0/kHzQ==", "user"=>{"email"=>"ryan.d.havens@gmail.com"}, "commit"=>"Update"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 156ms (Views: 87.5ms | ActiveRecord: 0.6ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 92ms (Views: 89.5ms | ActiveRecord: 0.3ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 102ms (Views: 99.5ms | ActiveRecord: 0.4ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 107ms (Views: 104.3ms | ActiveRecord: 0.3ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 111ms (Views: 108.5ms | ActiveRecord: 0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (9.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (19.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (10.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (20.3ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 113ms (Views: 107.9ms | ActiveRecord: 0.8ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 123ms (Views: 120.7ms | ActiveRecord: 0.3ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 103ms (Views: 101.6ms | ActiveRecord: 0.2ms)
+Processing by OffersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered offers/_form.html.erb (23.6ms)
+  Rendered offers/new.html.erb within layouts/application (38.7ms)
+Completed 200 OK in 162ms (Views: 142.0ms | ActiveRecord: 0.7ms)
+Processing by OffersController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered offers/_form.html.erb (4.3ms)
+  Rendered offers/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 107ms (Views: 104.2ms | ActiveRecord: 0.3ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 90ms (Views: 88.1ms | ActiveRecord: 0.2ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 106ms (Views: 103.8ms | ActiveRecord: 0.3ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 105ms (Views: 103.3ms | ActiveRecord: 0.3ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 102ms (Views: 99.8ms | ActiveRecord: 0.3ms)
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 101ms (Views: 99.1ms | ActiveRecord: 0.2ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 89ms (Views: 87.8ms | ActiveRecord: 0.2ms)
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 90ms (Views: 88.5ms | ActiveRecord: 0.2ms)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mOffer Load (0.4ms)[0m  SELECT "offers".* FROM "offers" WHERE "offers"."user_id" = $1  [["user_id", 21]]
+  Rendered users/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 137ms (Views: 134.6ms | ActiveRecord: 1.0ms)
+Processing by OffersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  [1m[35mOffer Load (0.4ms)[0m  SELECT "offers".* FROM "offers"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered offers/_offer.html.erb (19.0ms)
+  Rendered offers/_offer.html.erb (0.4ms)
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered offers/_offer.html.erb (2.4ms)
+  Rendered offers/_offer.html.erb (0.5ms)
+  Rendered offers/index.html.erb within layouts/application (35.5ms)
+Completed 200 OK in 165ms (Views: 162.0ms | ActiveRecord: 1.8ms)
+Processing by OffersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  [1m[35mOffer Load (0.3ms)[0m  SELECT "offers".* FROM "offers"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered offers/_offer.html.erb (1.4ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered offers/_offer.html.erb (0.9ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered offers/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 102ms (Views: 99.1ms | ActiveRecord: 1.1ms)
+Processing by OffersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  [1m[35mOffer Load (0.4ms)[0m  SELECT "offers".* FROM "offers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered offers/_offer.html.erb (1.6ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered offers/_offer.html.erb (1.1ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered offers/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 119ms (Views: 115.6ms | ActiveRecord: 1.2ms)
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 101ms (Views: 99.5ms | ActiveRecord: 0.2ms)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"reset_password"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (20.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (32.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (115.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (170.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (9.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (18.5ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 76ms (Views: 74.5ms | ActiveRecord: 0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (25.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (11.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (20.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (20.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (18.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (9.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (18.5ms)
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 97ms (Views: 95.5ms | ActiveRecord: 0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (20.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (9.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (19.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (19.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (18.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (20.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (17.9ms)
+Processing by Devise::PasswordsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 90ms (Views: 88.5ms | ActiveRecord: 0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (19.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (17.4ms)
+Processing by Devise::PasswordsController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 97ms (Views: 96.0ms | ActiveRecord: 0.2ms)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"password"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (12.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (10.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (21.6ms)
+Processing by Devise::RegistrationsController#cancel as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 104ms (Views: 102.2ms | ActiveRecord: 0.2ms)
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 191ms (Views: 190.0ms | ActiveRecord: 0.2ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 118ms (Views: 115.1ms | ActiveRecord: 0.4ms)
+Processing by OffersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  [1m[35mOffer Load (0.4ms)[0m  SELECT "offers".* FROM "offers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered offers/_offer.html.erb (1.5ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered offers/_offer.html.erb (1.3ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered offers/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 125ms (Views: 122.0ms | ActiveRecord: 1.2ms)
+Processing by OffersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered offers/_form.html.erb (2.9ms)
+  Rendered offers/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 103ms (Views: 100.1ms | ActiveRecord: 0.3ms)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mOffer Load (0.6ms)[0m  SELECT "offers".* FROM "offers" WHERE "offers"."user_id" = $1  [["user_id", 21]]
+  Rendered users/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 116ms (Views: 113.0ms | ActiveRecord: 1.0ms)
+Processing by OffersController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered offers/_form.html.erb (3.5ms)
+  Rendered offers/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 108ms (Views: 103.7ms | ActiveRecord: 0.7ms)
+Processing by OffersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mOffer Load (0.4ms)[0m  [1mSELECT "offers".* FROM "offers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered offers/_offer.html.erb (1.6ms)
+  Rendered offers/_offer.html.erb (0.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered offers/_offer.html.erb (1.2ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered offers/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 119ms (Views: 114.5ms | ActiveRecord: 1.3ms)
+Processing by OffersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mOffer Load (0.6ms)[0m  [1mSELECT "offers".* FROM "offers"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered offers/_offer.html.erb (2.3ms)
+  Rendered offers/_offer.html.erb (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered offers/_offer.html.erb (2.1ms)
+  Rendered offers/_offer.html.erb (0.3ms)
+  Rendered offers/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 104ms (Views: 100.0ms | ActiveRecord: 1.9ms)
+Processing by OffersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mOffer Load (0.3ms)[0m  [1mSELECT "offers".* FROM "offers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered offers/_offer.html.erb (1.2ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered offers/_offer.html.erb (1.3ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered offers/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 111ms (Views: 108.3ms | ActiveRecord: 1.0ms)
+Processing by OffersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mOffer Load (0.5ms)[0m  [1mSELECT "offers".* FROM "offers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered offers/_offer.html.erb (1.8ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered offers/_offer.html.erb (1.0ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered offers/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 115ms (Views: 112.0ms | ActiveRecord: 1.3ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 295ms (Views: 292.8ms | ActiveRecord: 0.3ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 84ms (Views: 81.3ms | ActiveRecord: 0.4ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 80ms (Views: 77.2ms | ActiveRecord: 0.3ms)
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 70ms (Views: 68.3ms | ActiveRecord: 0.3ms)
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 79ms (Views: 77.6ms | ActiveRecord: 0.2ms)
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 91ms (Views: 89.7ms | ActiveRecord: 0.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 11076ms (Views: 11044.3ms | ActiveRecord: 5.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 8563ms (Views: 8538.3ms | ActiveRecord: 2.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 704ms (Views: 669.5ms | ActiveRecord: 4.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.1ms)
+Completed 500 Internal Server Error in 531ms (ActiveRecord: 5.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (17.6ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 4370ms (Views: 4347.8ms | ActiveRecord: 1.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 515ms (Views: 498.3ms | ActiveRecord: 2.6ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 153ms (Views: 151.0ms | ActiveRecord: 0.0ms)
+Processing by OffersController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 158ms (Views: 156.9ms | ActiveRecord: 0.0ms)
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQBqPra6IFHrasew55H9s0Pgfx_CSuI5iKzRs7LSqoKzQ_dll5ceM16iYKC3NZfSx9RxqjM7Z3ti2CaUG6CHfXm2Y1Y2bMfClmJQkZVAl0jVJXevR1BEe8ObZ6iGkODBt3yI4WjWGkEcohCNteg1v2B-TwyX4GU3CHBvSVzoUEtTf-IjmdY6zX25ef6ox6qvj20sK7WAar9oYRNQzpjXpAkwx89ePupsyjRGpZuabHvTsItKx4ncC77ARNqKiWeQkp3d3q70vQ-qLK8xt0k_UW8ChqE3TlDgNMkU-sCJ6k8zRRnZU_ik_5Vkr4qUA2S2MTa1pmD8Ro8mGY45aVvUZnwl", "state"=>"ec9673e9c9c6b8ea354692a16f7ee534dd87c16f5c1c02ec"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "473418502829853"]]
+################################# USER LOGGED IN
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (14.9ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4  [["current_sign_in_at", "2015-10-18 14:34:22.618529"], ["sign_in_count", 2], ["updated_at", "2015-10-18 14:34:22.619180"], ["id", 21]]
+  [1m[36m (10.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://local.subleasy-site.herokuapp.com:3000/offers
+Completed 302 Found in 36ms (ActiveRecord: 26.0ms)
+Processing by OffersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mOffer Load (0.6ms)[0m  [1mSELECT "offers".* FROM "offers"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered offers/_offer.html.erb (12.3ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered offers/_offer.html.erb (1.0ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered offers/index.html.erb within layouts/application (88.4ms)
+Completed 200 OK in 252ms (Views: 239.3ms | ActiveRecord: 2.3ms)
+Processing by OffersController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered offers/_form.html.erb (7.5ms)
+  Rendered offers/new.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 170ms (Views: 167.2ms | ActiveRecord: 0.4ms)
+Processing by OffersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  [1m[35mOffer Load (0.4ms)[0m  SELECT "offers".* FROM "offers"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered offers/_offer.html.erb (1.8ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered offers/_offer.html.erb (1.3ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered offers/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 265ms (Views: 260.4ms | ActiveRecord: 1.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by OffersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mOffer Load (0.6ms)[0m  [1mSELECT "offers".* FROM "offers"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered offers/_offer.html.erb (12.5ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered offers/_offer.html.erb (0.8ms)
+  Rendered offers/_offer.html.erb (0.1ms)
+  Rendered offers/index.html.erb within layouts/application (36.4ms)
+Completed 500 Internal Server Error in 479ms (ActiveRecord: 5.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (15.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (7.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (16.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 733ms (Views: 716.8ms | ActiveRecord: 2.6ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 74ms (Views: 73.4ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 666ms (Views: 650.7ms | ActiveRecord: 1.7ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 126ms (Views: 124.6ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 1632ms (Views: 1615.7ms | ActiveRecord: 2.9ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 217ms (Views: 215.5ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 1003ms (Views: 990.5ms | ActiveRecord: 1.7ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 157ms (Views: 155.4ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 902ms (Views: 882.1ms | ActiveRecord: 1.6ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 207ms (Views: 205.5ms | ActiveRecord: 0.0ms)
+Processing by OffersController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 167ms (Views: 166.2ms | ActiveRecord: 0.0ms)
+Processing by OffersController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 172ms (Views: 170.5ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 18ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (30.1ms)
+Completed 200 OK in 721ms (Views: 703.7ms | ActiveRecord: 1.8ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 145ms (Views: 143.5ms | ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 180ms (Views: 179.1ms | ActiveRecord: 0.0ms)
+Processing by OffersController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 186ms (Views: 184.4ms | ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 166ms (Views: 164.4ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.1ms)
+Completed 200 OK in 1771ms (Views: 1748.2ms | ActiveRecord: 1.8ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 154ms (Views: 153.1ms | ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 169ms (Views: 168.3ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 1790ms (Views: 1769.6ms | ActiveRecord: 1.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 22ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 1054ms (Views: 1038.8ms | ActiveRecord: 2.2ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 232ms (Views: 231.3ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 13ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 671ms (Views: 657.7ms | ActiveRecord: 2.0ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 148ms (Views: 147.0ms | ActiveRecord: 0.0ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 189ms (Views: 188.2ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 622ms (Views: 607.3ms | ActiveRecord: 2.2ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 133ms (Views: 132.1ms | ActiveRecord: 0.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (29.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (16.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (30.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (21.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (10.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (19.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (19.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (9.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (21.1ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 445ms (Views: 443.7ms | ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 131ms (Views: 130.1ms | ActiveRecord: 0.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (30.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (13.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (30.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (43.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (11.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (20.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (29.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (10.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (24.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (18.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (17.5ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 144ms (Views: 141.9ms | ActiveRecord: 0.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (34.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (14.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (31.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (26.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (10.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (20.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (47.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (11.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (21.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.3ms)
+Completed 200 OK in 1904ms (Views: 1879.9ms | ActiveRecord: 1.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (44.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (2.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (12.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (26.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (27.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (11.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (22.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (26.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (10.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (21.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 382ms (Views: 360.1ms | ActiveRecord: 2.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 1261ms (Views: 1236.9ms | ActiveRecord: 2.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 6395ms (Views: 6372.5ms | ActiveRecord: 2.4ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 142ms (Views: 140.3ms | ActiveRecord: 0.0ms)
+Processing by OffersController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 164ms (Views: 163.0ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 7764ms (Views: 7737.7ms | ActiveRecord: 3.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (40.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (18.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (37.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (21.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (11.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (23.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (23.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (12.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (25.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 7133ms (Views: 7105.2ms | ActiveRecord: 3.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (37.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (14.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (30.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (29.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (13.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (26.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (21.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (11.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (23.4ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 138ms (Views: 137.0ms | ActiveRecord: 0.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (25.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (24.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (41.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (33.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (12.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (25.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (23.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (17.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 6859ms (Views: 6834.3ms | ActiveRecord: 1.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (28.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (17.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (34.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (40.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (22.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (38.9ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (34.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (10.1ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (21.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (18.4ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (8.0ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/ryan/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (16.9ms)
