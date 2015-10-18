@@ -1396,3 +1396,211 @@ Processing by OffersController#index as HTML
   Rendered offers/_offer.html.erb (0.2ms)
   Rendered offers/index.html.erb within layouts/application (10.5ms)
 Completed 200 OK in 109ms (Views: 104.9ms | ActiveRecord: 1.6ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 820ms (Views: 707.1ms | ActiveRecord: 26.2ms)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 19]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mOffer Load (1.0ms)[0m  [1mSELECT "offers".* FROM "offers" WHERE "offers"."user_id" = $1[0m  [["user_id", 19]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 19]]
+  Rendered offers/_offer.html.erb (1.2ms)
+  Rendered users/show.html.erb within layouts/application (107.9ms)
+Completed 200 OK in 198ms (Views: 174.8ms | ActiveRecord: 3.7ms)
+Processing by OffersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ff6vluLKz5MUcBTI4TIG8aea3MtEoFqkY2rCzrlKIRA+TzvoQs/7JMw9vVYj18JUHqfrsku0vtd9VUiURQSpoA==", "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 19]]
+  [1m[35mOffer Load (0.2ms)[0m  SELECT  "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT 1  [["id", "3"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "offers" WHERE "offers"."id" = $1  [["id", 3]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://local.subleasy-site.herokuapp.com:3000/offers
+Completed 302 Found in 13ms (ActiveRecord: 7.8ms)
+Processing by OffersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  [1m[36mOffer Load (0.4ms)[0m  [1mSELECT "offers".* FROM "offers"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered offers/_offer.html.erb (2.0ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered offers/_offer.html.erb (18.4ms)
+  Rendered offers/_offer.html.erb (0.6ms)
+  Rendered offers/index.html.erb within layouts/application (27.1ms)
+Completed 200 OK in 131ms (Views: 126.8ms | ActiveRecord: 1.5ms)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mOffer Load (0.2ms)[0m  SELECT "offers".* FROM "offers" WHERE "offers"."user_id" = $1  [["user_id", 19]]
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 95ms (Views: 92.8ms | ActiveRecord: 0.8ms)
+Processing by OffersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 19]]
+  Rendered offers/_form.html.erb (113.8ms)
+  Rendered offers/new.html.erb within layouts/application (114.9ms)
+Completed 200 OK in 197ms (Views: 195.5ms | ActiveRecord: 0.3ms)
+Processing by OffersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TWqqKnF5FOYtuO/qiN4uGM+y4RXABfH5nNgM57YoXl4O2z5U0XwgUfX1RnRKO+q9do/WbM8RFYqC54a9SmbW7g==", "offer"=>{"interested"=>"0", "image"=>"http://example.com", "line1"=>"156 Powderhouse Blvd", "line2"=>"", "city"=>"Somerville", "state"=>"MA", "zip"=>"02144", "rent"=>"500", "start_date"=>"2015-10-20", "end_date"=>"2015-10-30", "water"=>"0", "electric"=>"0", "gas"=>"0", "heat"=>"0", "internet"=>"0", "washdry"=>"0", "aircond"=>"0", "handicap"=>"0", "parking"=>"0"}, "commit"=>"Create Offer"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (16.3ms)[0m  INSERT INTO "offers" ("image", "line1", "line2", "city", "state", "zip", "rent", "start_date", "end_date", "water", "electric", "gas", "heat", "internet", "washdry", "aircond", "handicap", "parking", "interested", "user_id", "latitude", "longitude", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24) RETURNING "id"  [["image", "http://example.com"], ["line1", "156 Powderhouse Blvd"], ["line2", ""], ["city", "Somerville"], ["state", "MA"], ["zip", 2144], ["rent", 500], ["start_date", "2015-10-20"], ["end_date", "2015-10-30"], ["water", "f"], ["electric", "f"], ["gas", "f"], ["heat", "f"], ["internet", "f"], ["washdry", "f"], ["aircond", "f"], ["handicap", "f"], ["parking", "f"], ["interested", 0], ["user_id", 19], ["latitude", 42.405032], ["longitude", -71.125513], ["created_at", "2015-10-18 10:50:40.880039"], ["updated_at", "2015-10-18 10:50:40.880039"]]
+  [1m[36m (9.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://local.subleasy-site.herokuapp.com:3000/offers/4
+Completed 302 Found in 2588ms (ActiveRecord: 26.3ms)
+Processing by OffersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  [1m[36mOffer Load (0.3ms)[0m  [1mSELECT  "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 19]]
+  Rendered offers/_offer.html.erb (0.3ms)
+  Rendered offers/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 82ms (Views: 79.0ms | ActiveRecord: 0.7ms)
+Processing by OffersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 19]]
+  [1m[35mOffer Load (0.3ms)[0m  SELECT  "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT 1  [["id", "4"]]
+  Rendered offers/_form.html.erb (3.3ms)
+  Rendered offers/edit.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 102ms (Views: 99.1ms | ActiveRecord: 0.6ms)
+Processing by OffersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dsGqrcF9HeTGC7qHqYzoZuSWktXPHsp0EzCFM6uTzpI1cD7TYXgpUx5GExlraSzDXaulrMAKLgcNDw9pV91GIg==", "offer"=>{"interested"=>"0", "image"=>"http://example.com", "line1"=>"156 Powderhouse Blvd", "line2"=>"", "city"=>"Somerville", "state"=>"MA", "zip"=>"2144", "rent"=>"500", "start_date"=>"2015-10-20", "end_date"=>"2015-10-30", "water"=>"0", "electric"=>"0", "gas"=>"0", "heat"=>"1", "internet"=>"0", "washdry"=>"0", "aircond"=>"1", "handicap"=>"0", "parking"=>"0"}, "commit"=>"Update Offer", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 19]]
+  [1m[35mOffer Load (0.2ms)[0m  SELECT  "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT 1  [["id", "4"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "offers" SET "heat" = $1, "aircond" = $2, "updated_at" = $3 WHERE "offers"."id" = $4  [["heat", "t"], ["aircond", "t"], ["updated_at", "2015-10-18 10:51:04.945888"], ["id", 4]]
+  [1m[36m (17.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://local.subleasy-site.herokuapp.com:3000/offers/4
+Completed 302 Found in 2353ms (ActiveRecord: 18.1ms)
+Processing by OffersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  [1m[36mOffer Load (0.3ms)[0m  [1mSELECT  "offers".* FROM "offers" WHERE "offers"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 19]]
+  Rendered offers/_offer.html.erb (0.3ms)
+  Rendered offers/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 89ms (Views: 85.8ms | ActiveRecord: 0.7ms)
+Processing by OffersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 19]]
+  [1m[35mOffer Load (0.5ms)[0m  SELECT "offers".* FROM "offers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered offers/_offer.html.erb (1.7ms)
+  Rendered offers/_offer.html.erb (0.3ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered offers/_offer.html.erb (3.2ms)
+  Rendered offers/_offer.html.erb (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  Rendered offers/_offer.html.erb (2.4ms)
+  Rendered offers/_offer.html.erb (0.4ms)
+  Rendered offers/index.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 122ms (Views: 117.8ms | ActiveRecord: 1.9ms)
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"PPMu3RjziOnKBggsII4JSQ9fkyICnGyDosEi8rHyuaN/QrqjuPa8XhJLobLia83stmKkWw2IiPC8/qioTbwxEw=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Completed 302 Found in 34ms (ActiveRecord: 0.5ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (35.5ms)
+Completed 200 OK in 119ms (Views: 116.9ms | ActiveRecord: 0.0ms)
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQDo5kLSh2gad7PcssncFZ5EuHl3dT_S8a8NBkmnUMWse0OKmUT5E8r3jqSgW0vTJjYaqd0iVmBoiz0MqI9q770J57y-xABKjNuQmjwj4gTHc2B6vPvW_JrzlJ7NEfk5mitIf4pVR7ddHga1xVFcWYm_zgxqHJGEmWVchUXB_njLIHPE-13YSZ72YqM7NYRh4M7xbDKrSKqwqXFLBJHubq47L9EvXdrpFdgej1p_A29T11E2NRdvMkJf_GeJN7CT5g5ldVMqhO7P-BjtN5nHTTBQ_pBa4KEkfzL6Z2E32QB7eOFUp6OKfADSm0M85mOCGpgXfOV4pvSBgrc4TLp_LVH0", "state"=>"eb18f3fb649f9b27e07f551a82cc4378fcf8043e850a2700"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1[0m  [["provider", "facebook"], ["uid", "473418502829853"]]
+################################# USER LOGGED IN
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2015-10-18 10:51:24.051921"], ["sign_in_count", 2], ["updated_at", "2015-10-18 10:51:24.052534"], ["id", 19]]
+  [1m[35m (7.3ms)[0m  COMMIT
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Completed 302 Found in 12ms (ActiveRecord: 8.0ms)
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 19]]
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 81ms (Views: 79.4ms | ActiveRecord: 0.3ms)
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mOffer Load (0.3ms)[0m  SELECT "offers".* FROM "offers" WHERE "offers"."user_id" = $1  [["user_id", 19]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 111ms (Views: 108.8ms | ActiveRecord: 0.7ms)
+Processing by OffersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  Rendered offers/_form.html.erb (3.0ms)
+  Rendered offers/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 90ms (Views: 87.9ms | ActiveRecord: 0.2ms)
+Processing by OffersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 19]]
+  [1m[35mOffer Load (0.4ms)[0m  SELECT "offers".* FROM "offers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered offers/_offer.html.erb (1.2ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered offers/_offer.html.erb (1.0ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  Rendered offers/_offer.html.erb (1.1ms)
+  Rendered offers/_offer.html.erb (0.2ms)
+  Rendered offers/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 139ms (Views: 135.9ms | ActiveRecord: 1.4ms)
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 19]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 75ms (Views: 72.9ms | ActiveRecord: 0.2ms)
+Processing by Devise::RegistrationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"pAyenXE25kx2jjxCujZrH3xxNOJm4GEoNOBHgvn5iuf6DexmFWlQdX6NHhh423LsMLpGn8or/cEd4OWDatuNng=="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 19]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mOffer Load (0.3ms)[0m  [1mSELECT "offers".* FROM "offers" WHERE "offers"."user_id" = $1[0m  [["user_id", 19]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "offers" WHERE "offers"."id" = $1  [["id", 4]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 19]]
+  [1m[35m (28.0ms)[0m  COMMIT
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Completed 302 Found in 34ms (ActiveRecord: 29.2ms)
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 142ms (Views: 139.9ms | ActiveRecord: 0.0ms)
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQDSrDIkA7SGgjMzgZvWZf5Arp-Dm0_vxcecaetaRYQTIl2qRbaCDytTVTgC4j_yHXxP4cSQdNFypZ19O3VFfrsg3th0Wj-7U2Zd4QoPvqvR3_mfkFUXr1Dm3593vafBYqubj3Bpk5aiyVXcR-QSfNNMvtjTJ2kBzIqT00Kr4A_76gQLudyHA0GX9cJQjaW3kz-3M-D-MK6FmTCFsDb1zfydXsqHj_OEroowfp_oW_mO8OW7HgpIExOPHWW_bi8ZE3xSPRDNugqnVf6l0GMu_A9mrA8OVpMfXuBJivuXpV8ezQ7-Or2KkWnHNhWy9dMhKCH99Am7hlC7_bsRb9SR82y2", "state"=>"915129abaf085a9516bad4c7d29afcd437c8125b9e95fb64"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1[0m  [["provider", "facebook"], ["uid", "473418502829853"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ryan.d.havens@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "provider", "uid", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Ryan Havens"], ["provider", "facebook"], ["uid", "473418502829853"], ["email", "ryan.d.havens@gmail.com"], ["encrypted_password", "$2a$10$ZxO4lAMKCme2UbDabSGEPuGIxEDcfmjNtfXcciVm7ormTQsvllCge"], ["created_at", "2015-10-18 10:51:50.793086"], ["updated_at", "2015-10-18 10:51:50.793086"]]
+  [1m[36m (12.3ms)[0m  [1mCOMMIT[0m
+################################# USER LOGGED IN
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-10-18 10:51:50.807214"], ["current_sign_in_at", "2015-10-18 10:51:50.807214"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-10-18 10:51:50.807871"], ["id", 20]]
+  [1m[35m (8.7ms)[0m  COMMIT
+Redirected to http://local.subleasy-site.herokuapp.com:3000/
+Completed 302 Found in 109ms (ActiveRecord: 22.5ms)
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 20]]
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 75ms (Views: 73.4ms | ActiveRecord: 0.2ms)
+Processing by OffersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 20]]
+  [1m[36mOffer Load (0.5ms)[0m  [1mSELECT "offers".* FROM "offers"[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered offers/_offer.html.erb (2.0ms)
+  Rendered offers/_offer.html.erb (0.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered offers/_offer.html.erb (2.2ms)
+  Rendered offers/_offer.html.erb (0.3ms)
+  Rendered offers/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 136ms (Views: 132.9ms | ActiveRecord: 1.5ms)

@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
     # end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
-    logger.debug "SELF FROM OMNIAUTH"
-    logger.debug "#{@auth.inspect}"
     user = User.where(provider: auth.provider, uid: auth.uid).first
     if user.present?
       user
@@ -31,9 +29,6 @@ class User < ActiveRecord::Base
 	end
 
 	def self.new_with_session(params, session)
-		logger.debug "NEW WITH SESSION"
-		logger.debug "#{@params.inspect}"
-		logger.debug "#{@session.inspect}"
 		super.tap do |user|
 		  if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
 		    user.email = data["email"] if user.email.blank?
