@@ -29,7 +29,7 @@ gem 'devise'
 
 # auth
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook'	
 
 # semantic
 gem 'semantic-ui-sass'
@@ -39,6 +39,9 @@ gem 'geocoder'
 
 # google maps support
 gem 'gmaps4rails'
+
+# env support
+gem 'dotenv-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
