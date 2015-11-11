@@ -34,13 +34,22 @@
 			  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
 			<% end %>
 		</p>
-		<p class="item notice"><% if flash[:notice] %>
-				<div class="ui item success message alert alert-danger"><h3 class="item">Success</h3><p class="item"><%= flash[:notice] %></p></div>
+		<% if flash.kind_of?(Array) %>
+			<% flash.each do |key, value| %>
+				<div class="ui item <%= key %> message alert alert-danger">
+					<% value.each do |element| %>
+						<p class="item"><%= element %>.</p>
+					<% end %>
+				</div>
+			<% end %>
+		<% else %>
+			<% if flash[:notice] %>
+				<div class="ui item success message alert alert-danger"><p class="item"><%= flash[:notice] %></p></div>
+			<% end %>
+			<% if flash[:alert] %>
+				<div class="ui item error message alert alert-danger"><p class="item"><%= flash[:alert] %></p></div>
+			<% end %>
 		<% end %>
-		<% if flash[:alert] %>
-				<div class="ui item error message alert alert-danger"><h3 class="item">Error</h3><p class="item"><%= flash[:alert] %></p></div>
-		<% end %>
-		</p>
 	</div>
 	<div class="ui page grid">
 		<%= yield %>

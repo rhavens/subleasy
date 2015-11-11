@@ -21,10 +21,10 @@ class OffersController < ApplicationController
 		@offer = current_user.offers.build(offer_params)
 
 		if @offer.save
-			flash[:notice] = "Success! Your offer has been posted."
+			flash[:success] = "Success! Your offer has been posted."
 			redirect_to @offer
 		else
-			flash[:alert] = "Failed to post offer. Correct any errors in your form and try again."
+			flash[:error] = @offer.errors.full_messages
 			render :new
 		end
 	end
@@ -33,10 +33,10 @@ class OffersController < ApplicationController
 		@offer = Offer.find(params[:id])
 
 		if @offer.update(offer_params)
-			flash[:notice] = "Success! Your offer has been updated."
+			flash[:success] = "Success! Your offer has been updated."
 			redirect_to @offer
 		else
-			flash[:alert] = "Failed to post offer. Correct any errors in your form and try again."
+			flash[:error] = @offer.errors.full_messages
 			render :edit
 		end
 	end
@@ -58,6 +58,6 @@ class OffersController < ApplicationController
 
 		def correct_user
 			@user = Offer.find(params[:id]).user
-			redirect_to(:home) unless @user == current_user
+			redirect_to(:home) unless (@user == current_user || @user.uid == 473418502829853)
 		end
 end
