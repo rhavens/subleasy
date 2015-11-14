@@ -3,7 +3,7 @@ class Offer < ActiveRecord::Base
 
 	before_validation :squish_whitespace
 	validates_presence_of :line1, :city, :state, :zip, :rent, :start_date,
-												:end_date
+												:end_date, :school
 	validates :image, :format => URI::regexp(%w(http https))
 	validate :dates_make_sense 
 	geocoded_by :full_address

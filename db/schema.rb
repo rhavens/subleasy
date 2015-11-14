@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018085823) do
+ActiveRecord::Schema.define(version: 20151114194905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,12 +35,13 @@ ActiveRecord::Schema.define(version: 20151018085823) do
     t.boolean  "aircond"
     t.boolean  "handicap"
     t.boolean  "parking"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "interested"
     t.integer  "user_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "school",     default: "Unknown"
   end
 
   add_index "offers", ["user_id"], name: "index_offers_on_user_id", using: :btree

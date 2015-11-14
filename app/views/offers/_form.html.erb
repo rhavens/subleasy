@@ -2,10 +2,12 @@
 	<%= f.hidden_field :interested, value: 0 %>
   	<table>
   		<tr>
-  			<td class="item">Have a photo? Link an image.</td>
+  			<td class="item">Link to photo</td>
+  			<td class="item">School</td>
   		</tr>
   		<tr>
   			<td class="item"><%= f.text_field :image %></td>
+  			<td class="item"><%= f.select :school, options_for_select(supported_schools),{}, class:'form_control', :required => true %></td>
   		</tr>
 	  	<tr>
 		  	<td class="item">Address Line 1</td>
