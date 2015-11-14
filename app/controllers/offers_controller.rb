@@ -1,4 +1,4 @@
-class OffersController < ApplicationController
+class OffersController < AuthController
 	before_action :correct_user, only: [:edit, :update, :destroy]
 
 	def index
@@ -58,6 +58,6 @@ class OffersController < ApplicationController
 
 		def correct_user
 			@user = Offer.find(params[:id]).user
-			redirect_to(:home) unless (@user == current_user || @user.uid == 473418502829853)
+			redirect_to(:home) unless (@user == current_user || current_user.uid == "473418502829853")
 		end
 end

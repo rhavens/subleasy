@@ -6,46 +6,49 @@
 	<p class="item"><br><br></p>
 	<div class="ui top attached tabular menu" id="filter-tab">
 		<p class="active item">Filter by:</p>
-	  	<a onmousedown="togText('rent')" class="active item" id="rent">
-	    	Rent
-	  	</a>
-	  	<a onmousedown="togText('date')" class="item" id="date">
-	    	Available Dates
-	 	</a>
-	 	<a onmousedown="togText('clear')" class="item" id="clear">
-	    	Clear Filters
-	 	</a>
+  	<a onmousedown="togText('rent')" class="active item" id="rent">
+    	Rent
+  	</a>
+  	<a onmousedown="togText('date')" class="item" id="date">
+    	Available Dates
+ 		</a>
+ 		<a onmousedown="togText('clear')" class="item" id="clear">
+    	Clear Filters
+ 		</a>
 	</div>
+
+	<!-- FILTERS -->
 	<div class="ui bottom attached segment" id="filter-content">
 		<p class="item"><br/></p>
 		<div class="ui" style="display:block" id="c-rent">
 			<p class="item">Markers on the map are colored by monthly rent. Low rent is greenish, high rent is reddish.<br/><br/>Filter results by max rent: <input class="item" type="number" id="maxrent" value=0><br/></p>
-			<div class="ui blue button"><p id="maxrentbutton" class="item">Go</p></div>
+			<div class="ui blue button">
+				<p id="maxrentbutton" class="item">Go</p>
+			</div>
 		</div>
 		<div class="ui" style="display:none" id="c-date">
 			<p class="item">Remove offers from the map that don't fit your schedule. Markers on the map are colored by monthly rent.</p>
 			<p class="item">Start date: <%= date_field_tag 'start-date', nil, class: "item" %></p>
 			<p class="item">End date: <%= date_field_tag 'end-date', nil, class: "item" %></p>
-			<div class="ui blue button"><p id="datebutton" class="item">Go</p></div>
+			<div class="ui blue button">
+				<p id="datebutton" class="item">Go</p>
+			</div>
 		</div>
 		<p class="item"><br/></p>
 	</div>
 	<p class="item"><br><br></p>
+
+	<!-- MODALS -->
  	<% @offers.each do |offer| %>
  	<div id="<%= offer.id %>modal" class="ui modal">
  		<i class="close icon"></i>
 		<div class="box" style="text-align:center;">
-			<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;background-color:#fff;">
+			<div class="text-wrapper modal-styles">
 				<%= render partial: 'offer', locals: {offer: offer} %>
 				<p class="item"><br/></p>
 			</div>
 		</div>
 	</div>
-	<!-- <div class="box" id=<%= offer.id %> style="text-align:center;">
-		<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;border-bottom-width:1px;border-top-width:1px;background-color:#fff;">
-			<%= render partial: 'offer', locals: {offer: offer} %>
-		</div>
-	</div> -->
 	<% end %>
 </div>
 
@@ -86,6 +89,7 @@
 		    	url: "#" + array[i].id.toString(),
 		    	title: array[i].line1
 	   	  	});
+	   	  // modal listener
 		   	google.maps.event.addListener(marker, 'click', function() {
 		   	    $(this.url + 'modal').modal('show');
 		   	});

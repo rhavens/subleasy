@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < AuthController
 
 	def show
 		@user = User.find(params[:id])
