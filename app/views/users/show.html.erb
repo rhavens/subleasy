@@ -1,5 +1,5 @@
 <% @user.offers.each do |offer| %>
-<div class="box" style="text-align:center;">
+<div class="box" style="text-align:center;margin-bottom:20px;">
 	<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;">
 		<div class="center" style="text-align:center;">
 			<% if (current_user == offer.user || current_user.uid == "473418502829853") %>
@@ -9,4 +9,18 @@
 		<%= render partial: 'offers/offer', locals: {offer: offer} %>
 	</div>
 </div>
+<% end %>
+<% if ((current_user.uid == "473418502829853") and (current_user.id == @user.id)) %>
+	<% @users.each do |u| %>
+	<div class="box" style="text-align:center;margin-bottom:20px;">
+		<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;">
+			<div class="center" style="text-align:center;">
+				<h3 class="item"><%= u.name %></h3>
+				<p class="item">#offers: <%= u.offers.length %>, id: <%= u.id %>, uid: <%= u.uid %>, created: <%= u.created_at %></p>
+				<img src="http://graph.facebook.com/<%= u.uid %>/picture"></img>
+				<p class="item"><%= "todo ban" %> | <%= link_to 'Show', user_path(u.id), method: :get %> | <%= link_to 'Delete', user_path(u.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+			</div>
+		</div>
+	</div>
+	<% end %>
 <% end %>

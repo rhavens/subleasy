@@ -10,62 +10,65 @@
 </head>
 <body>
     <!-- NAVBAR -->
-    <div class='center'>
     <div class="ui page grid center nav-holder">
-    <nav class="ui inverted menu navbar">
-        <div class="left menu nav-elem">
-        	<div style="background-color:#FFF;">
-            <%= link_to (image_tag "SubleasyLogo.png", :class=>"ui logo"), :home, :class=>"item zero-pad" %>
-        	</div>
-        </div>
-        <div class="right menu nav-elem">
-            <%= link_to '<i class="icon shop"></i>Sublets'.html_safe, :offers, 'data-no-turbolink' => true, :class=>"item" %>
-            <%= link_to '<i class="icon home nav-elem"></i>New Offer'.html_safe, new_offer_path, :class=>"item" %>
-            <% if user_signed_in? %>
-            	<%= link_to '<i class="icon setting nav-elem"></i>My Offers'.html_safe, current_user, :class=>"item" %>
-            <% end %>
-            <div class="item nav-elem" style="padding-bottom:0">
-        		<% if user_signed_in? %>
-        		  <strong><%= current_user.name %></strong> <img height=25 src='<%= "http://graph.facebook.com/" + current_user.uid + "/picture" %>'></img> 
-        		  <%= link_to 'Account', edit_user_registration_path, :class => 'navbar-link' %> |
-        		  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-        		<% else %>
-        		  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-        		<% end %>
-        	</div>
-        </div>
-    </nav>
+        <nav class="ui inverted menu navbar">
+            <div class="left menu nav-elem">
+            	<div style="background-color:#FFF;">
+                <%= link_to (image_tag "SubleasyLogo.png", :class=>"ui logo"), :home, :class=>"item zero-pad" %>
+            	</div>
+            </div>
+            <div class="right menu nav-elem">
+                <%= link_to '<i class="icon shop"></i>Sublets'.html_safe, :offers, 'data-no-turbolink' => true, :class=>"item" %>
+                <%= link_to '<i class="icon home nav-elem"></i>New Offer'.html_safe, new_offer_path, :class=>"item" %>
+                <% if user_signed_in? %>
+                	<%= link_to '<i class="icon setting nav-elem"></i>My Offers'.html_safe, current_user, :class=>"item" %>
+                <% end %>
+                <div class="item nav-elem" style="padding-bottom:0">
+            		<% if user_signed_in? %>
+            		  <strong><%= current_user.name %></strong> <img width=25 height=25 src='<%= "http://graph.facebook.com/" + current_user.uid + "/picture" %>'></img> 
+            		  <%= link_to 'Account', edit_user_registration_path, :class => 'navbar-link' %> |
+            		  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            		<% else %>
+            		  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+            		<% end %>
+            	</div>
+            </div>
+        </nav>
 
-    <!-- MESSAGE SUPPORT -->
-    <div class="ui page grid notice-bar">
-		<% flash.each do |key, value| %>
-            <% if value.respond_to?('each') %>
-				<div class="ui item <%= key %> message alert alert-danger">
-					<% value.each do |element| %>
-						<p class="item"><%= element %>.</p>
-					<% end %>
-				</div>
-            <% else %>
-                <% if (key == "notice") %>
-                    <div class="ui item success message alert alert-danger">
-                        <p class="item"><%= value %></p>
-                    </div>
-                <% end %>
-                <% if (key == "alert" || key == "error") %>
-                    <div class="ui item error message alert alert-danger">
-                        <p class="item"><%= value %></p>
-                    </div>
-                <% end %>
-		     <% end %>
-	    <% end %>
-	</div>
-</div>
-</div>
+        <!-- MESSAGE SUPPORT -->
+        <div class="ui page grid notice-bar">
+            <% flash.each do |key, value| %>
+                <% if value.respond_to?('each') %>
+        			<div class="ui item <%= key %> message alert alert-danger">
+        				<% value.each do |element| %>
+        					<p class="item"><%= element %>.</p>
+        				<% end %>
+        			</div>
+                <% else %>
+                    <% if (key == "notice" || key == "success") %>
+                        <div class="ui item success message alert alert-danger">
+                            <p class="item"><%= value %></p>
+                        </div>
+                    <% end %>
+                    <% if (key == "alert" || key == "error") %>
+                        <div class="ui item error message alert alert-danger">
+                            <p class="item"><%= value %></p>
+                        </div>
+                    <% end %>
+        	    <% end %>
+        	<% end %>
+        </div>
+    </div>
     <!-- YIELD -->
 	<div class="ui page grid">
 		<%= yield %>
 		<div class="footer" style="height:150px;">
 		</div>
 	</div>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $('.notice-bar').delay(2000).fadeOut(1000);
+        });
+    </script>
 </body>
 </html>
