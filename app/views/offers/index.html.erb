@@ -1,60 +1,60 @@
-<div class="ui wrapper" style="text-align:center;">
-	<h1>Offer Listing</h1>
-	<div id="map-container">
-	 	<div id="map-canvas"></div>
+<div class='ui wrapper' style='text-align:center;'>
+	<h1 class='page-title'>Sublets on the Market</h1>
+	<div id='map-container'>
+	 	<div id='map-canvas'></div>
 	</div>
-	<p class="item"><br><br></p>
-	<div class="ui top attached tabular menu" id="filter-tab">
-		<p class="active item">Filter by:</p>
-  	<a onmousedown="togText('rent')" class="active item" id="rent">
+	<p class='item'><br><br></p>
+	<div class='ui top attached tabular menu' id='filter-tab'>
+		<p class='active item' id='filter-by'>Filter by:</p>
+  	<a onmousedown="togText('rent')" class='active item' id='rent'>
     	Rent
   	</a>
-  	<a onmousedown="togText('date')" class="item" id="date">
+  	<a onmousedown="togText('date')" class='item' id='date'>
     	Available Dates
  		</a>
- 		<a onmousedown="togText('clear')" class="item" id="clear">
+ 		<a onmousedown="togText('clear')" class='item' id='clear'>
     	Clear Filters
  		</a>
 	</div>
 
 	<!-- FILTERS -->
-	<div class="ui bottom attached segment" id="filter-content">
-		<p class="item"><br/></p>
-		<div class="ui" style="display:block" id="c-rent">
-			<p class="item">Markers on the map are colored by monthly rent. Low rent is greenish, high rent is reddish.<br/><br/>Filter results by max rent: <input class="item" type="number" id="maxrent" value=0><br/></p>
-			<div class="ui blue button">
-				<p id="maxrentbutton" class="item">Go</p>
+	<div class='ui bottom attached segment' id='filter-content'>
+		<p class='item'><br/></p>
+		<div class='ui' style='display:block' id='c-rent'>
+			<p class='item'>Markers on the map are colored by monthly rent. Low rent is greenish, high rent is reddish.<br/><br/>Filter results by max rent: <input class='item' type='number' id='maxrent' value=0><br/></p>
+			<div class='ui blue button'>
+				<p id='maxrentbutton' class='item'>Go</p>
 			</div>
 		</div>
-		<div class="ui" style="display:none" id="c-date">
-			<p class="item">Remove offers from the map that don't fit your schedule. Markers on the map are colored by monthly rent.</p>
-			<p class="item">Start date: <%= date_field_tag 'start-date', nil, class: "item" %></p>
-			<p class="item">End date: <%= date_field_tag 'end-date', nil, class: "item" %></p>
-			<div class="ui blue button">
-				<p id="datebutton" class="item">Go</p>
+		<div class='ui' style='display:none' id='c-date'>
+			<p class='item'>Remove offers from the map that don't fit your schedule. Markers on the map are colored by monthly rent.</p>
+			<p class='item'>Start date: <%= date_field_tag 'start-date', nil, class: 'item' %></p>
+			<p class='item'>End date: <%= date_field_tag 'end-date', nil, class: 'item' %></p>
+			<div class='ui blue button'>
+				<p id='datebutton' class='item'>Go</p>
 			</div>
 		</div>
-		<p class="item"><br/></p>
+		<p class='item'><br/></p>
 	</div>
-	<p class="item"><br><br></p>
+	<p class='item'><br><br></p>
 
 	<!-- MODALS -->
  	<% @offers.each do |offer| %>
- 	<div id="<%= offer.id %>modal" class="ui modal">
- 		<i class="close icon"></i>
-		<div class="box" style="text-align:center;">
-			<div class="text-wrapper modal-styles">
+ 	<div id='<%= offer.id %>modal' class='ui modal'>
+ 		<i class='close icon'></i>
+		<div class='box' style='text-align:center;'>
+			<div class='text-wrapper modal-styles'>
 				<%= render partial: 'offer', locals: {offer: offer} %>
-				<p class="item"><br/></p>
+				<p class='item'><br/></p>
 			</div>
 		</div>
 	</div>
 	<% end %>
 </div>
 
-<script type="text/javascript">
+<script type='text/javascript'>
 	function test(value) {
-		console.log("test " + value)
+		console.log('test ' + value)
 	}
 	//-------------------------------------------//
 	//		Google maps stuff
@@ -68,17 +68,16 @@
 	  	};
 	  	map = new google.maps.Map(document.getElementById('map-canvas'),
 	      mapOptions);
-		generateMarkersByParameter(offers, "rent")
+		generateMarkersByParameter(offers, 'rent')
 	}
 
 	function generateMarkersByParameter(array, parameter) {
 		deleteMarkers()
 		if (!array.length) return;
-		sortByKey(array, parameter)
 		minP = array[0][parameter]
 		maxP = array[array.length-1][parameter]
 		for (var i = 0; i < array.length; i++) {
-	  	  	var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + hsv2rgb(array[i][parameter], minP, maxP),
+	  	  	var pinImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + hsv2rgb(array[i][parameter], minP, maxP),
 	   	        new google.maps.Size(21, 34),
 	   	        new google.maps.Point(0,0),
 	   	        new google.maps.Point(10, 34));
@@ -86,7 +85,7 @@
 		    	position: new google.maps.LatLng(array[i].latitude, array[i].longitude),
 		    	map: map,
 		    	icon: pinImage,
-		    	url: "#" + array[i].id.toString(),
+		    	url: '#' + array[i].id.toString(),
 		    	title: array[i].line1
 	   	  	});
 	   	  // modal listener
@@ -106,7 +105,7 @@
 
 	function componentToHex(c) {
 	    var hex = c.toString(16);
-	    return hex.length == 1 ? "0" + hex : hex;
+	    return hex.length == 1 ? '0' + hex : hex;
 	}
 
 	// function rainbowColor(val, min, max)
@@ -154,7 +153,7 @@
 	    }
 	  }
 	  return rgb.map(function(x){
-	    return ("0" + Math.round(x*255).toString(16)).slice(-2);
+	    return ('0' + Math.round(x*255).toString(16)).slice(-2);
 	  }).join('');
 	};
 
@@ -165,38 +164,19 @@
 	//		Sorting, filtering, other features with our data
 	//
 	offers = <%=raw @offers.to_json %>
+	offers = sortByKey(offers, 'rent')
+	offers_filtered = offers
+	bRentFiltered = false
+	bDateFiltered = false
+	sRentFilter = ''
+	sStartDateFilter = ''
+	sEndDateFilter = ''
 
 	function sortByKey(array, key) {
 	    return array.sort(function(a, b) {
 	        var x = a[key]; var y = b[key];
 	        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
 	    });
-	}
-
-	active = "rent"
-	function togText(filter) {
-		if (filter == "clear")
-		{
-			generateMarkersByParameter(offers, "rent");
-		}
-		else
-		{
-			if (filter != active) {
-				$("#"+filter).addClass("active")
-				$("#"+active).removeClass("active")
-				$("#c-"+filter).css('display','block')
-				$("#c-"+active).css('display','none')
-				active = filter
-			}
-		}
-	}
-
-	function filterRent() {
-		generateMarkersByParameter(offers.filter(function(item){return item["rent"] <= $('#maxrent').val()}), "rent");
-	}
-
-	function filterDate() {
-		generateMarkersByParameter(offers.filter(function(item){return ((item["start_date"] <= $('#start-date').val()) && (item["end_date"] >= $('#end-date').val()))}), "rent");
 	}
 
 	$(document).ready(function() {
@@ -216,6 +196,7 @@
 			}
 		});
 		$('#maxrentbutton').click(function() {
+			console.log('fuckin go')
 			return filterRent();
 		});
 		$('#datebutton').click(function() {
@@ -223,14 +204,86 @@
 		});
 	});
 
+	function resetFilters() {
+		bRentFiltered = false
+		bDateFiltered = false
+	}
+
+	function updateFilterByText() {
+		// This function is written a bit sloppily because we only have
+		// four cases at the moment, this way is more efficient than 
+		// concatenating strings. TODO add more filters.
+		if (bRentFiltered && bDateFiltered) {
+			text = 'Filter by: $' + sRentFilter + ', ' + sStartDateFilter + ' to ' + sEndDateFilter
+		}
+		else if (bDateFiltered) {
+			text = 'Filter by:  ' + sStartDateFilter + ' to ' + sEndDateFilter
+		}
+		else if (bRentFiltered) {
+			text = 'Filter by: $' + sRentFilter
+		}
+		else
+		{
+			text = 'Filter by:'
+		}
+		$('#filter-by').text(text)
+	}
+
+	active = 'rent'
+	function togText(filter) {
+		if (filter == 'clear')
+		{
+			resetFilters()
+			generateMarkersByParameter(offers, 'rent');
+		}
+		else
+		{
+			if (filter != active) {
+				$('#'+filter).addClass('active')
+				$('#'+active).removeClass('active')
+				$('#c-'+filter).css('display','block')
+				$('#c-'+active).css('display','none')
+				active = filter
+			}
+		}
+		updateFilterByText()
+	}
+
+	function runFilters() {
+		offersfiltered = offers
+		if (bRentFiltered) {
+			offersfiltered = offersfiltered.filter(function(item){return item['rent'] <= sRentFilter})
+		}
+		if (bDateFiltered) {
+			offersfiltered = offersfiltered.filter(function(item){return ((item['start_date'] <= sStartDateFilter) && (item['end_date'] >= sEndDateFilter))})
+		}
+	}
+
+	function filterRent() {
+		bRentFiltered = true
+		sRentFilter = $('#maxrent').val()
+		runFilters()
+		generateMarkersByParameter(offersfiltered, 'rent');
+		updateFilterByText()
+	}
+
+	function filterDate() {
+		bDateFiltered = true
+		sStartDateFilter = $('#start-date').val()
+		sEndDateFilter = $('#end-date').val()
+		runFilters()
+		generateMarkersByParameter(offersfiltered, 'rent');
+		updateFilterByText()
+	}
+
 </script>
 
-<!-- var pinColor = "FE7569";
-var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+<!-- var pinColor = 'FE7569';
+var pinImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + pinColor,
     new google.maps.Size(21, 34),
     new google.maps.Point(0,0),
     new google.maps.Point(10, 34))
-var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+var pinShadow = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_shadow',
     new google.maps.Size(40, 37),
     new google.maps.Point(0, 0),
     new google.maps.Point(12, 35))
