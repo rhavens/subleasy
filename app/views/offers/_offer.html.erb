@@ -2,7 +2,7 @@
 	<h2><a><%= link_to offer.line1 + ' ' + offer.line2, offer_path(offer.id) %></a></h2>
 	<h3>
 		<div class="ui primary button">
-		    <i class="in cart icon"></i><a href='<%= "mailto:" + offer.user.email %>' class="item"><span style="color:white;">Contact seller</span></a>
+		    <i class="in cart icon"></i><a href='https://www.facebook.com/app_scoped_user_id/<%=  offer.user.uid %>' class="item"><span style="color:white;">Contact seller</span></a>
 		</div>
 	</h3>
 </div>

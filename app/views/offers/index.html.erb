@@ -5,25 +5,25 @@
 	</div>
 	<p class='item'><br><br></p>
 	<div class='ui top attached tabular menu' id='filter-tab'>
-		<p class='active item' id='filter-by'>Filter by:</p>
-  	<a onmousedown="togText('rent')" class='active item' id='rent'>
+		<div class='active item filter-item' id='filter-by'>Filter by:</div>
+  	<a onmousedown="togText('rent')" class='active item filter-item' id='rent'>
     	Rent
   	</a>
-  	<a onmousedown="togText('date')" class='item' id='date'>
+  	<a onmousedown="togText('date')" class='item filter-item' id='date'>
     	Available Dates
  		</a>
- 		<a onmousedown="togText('clear')" class='item' id='clear'>
+ 		<a onmousedown="togText('clear')" class='item filter-item' id='clear'>
     	Clear Filters
  		</a>
 	</div>
 
 	<!-- FILTERS -->
 	<div class='ui bottom attached segment' id='filter-content'>
-		<p class='item'><br/></p>
+		<p class='item no-top-margin'><br/></p>
 		<div class='ui' style='display:block' id='c-rent'>
-			<p class='item'>Markers on the map are colored by monthly rent. Low rent is greenish, high rent is reddish.<br/><br/>Filter results by max rent: <input class='item' type='number' id='maxrent' value=0><br/></p>
+			<p class='item no-top-margin'>Markers on the map are colored by monthly rent. Low rent is greenish, high rent is reddish.<br/><br/>Filter results by max rent: <input class='item' type='number' id='maxrent' value=0><br/></p>
 			<div class='ui blue button'>
-				<p id='maxrentbutton' class='item'>Go</p>
+				<p id='maxrentbutton' class='item' style="margin:0;">Go</p>
 			</div>
 		</div>
 		<div class='ui' style='display:none' id='c-date'>
@@ -31,10 +31,10 @@
 			<p class='item'>Start date: <%= date_field_tag 'start-date', nil, class: 'item' %></p>
 			<p class='item'>End date: <%= date_field_tag 'end-date', nil, class: 'item' %></p>
 			<div class='ui blue button'>
-				<p id='datebutton' class='item'>Go</p>
+				<p id='datebutton' class='item' style="margin:0;">Go</p>
 			</div>
 		</div>
-		<p class='item'><br/></p>
+		<p class='item no-top-margin'><br/></p>
 	</div>
 	<p class='item'><br><br></p>
 
