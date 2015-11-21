@@ -57,6 +57,8 @@ body { height:100%; top:0; bottom:0; right:0; left:0; }
 nav {
 	background-color: #2262A2 !important;
 	height: 65px;
+	padding-left: 15rem !important;
+	padding-right: 15rem !important;
 }
 
 .notice-bar {
@@ -79,9 +81,10 @@ nav {
 }
 
 .ui .logo {
-	height:65px;
-	width:174px;
-	padding:0;
+	background-color: white;
+	height: 65px;
+	width: 174px;
+	padding: 0;
 }
 
 .zero-pad {
@@ -102,12 +105,13 @@ body {
 	height: 75px;
 	padding: 0 !important;
 	margin: auto !important;
+	display: table;
 }
 
 .nav-elem {
-	height: inherit;
+	height: 75px;
 	vertical-align: middle;
-	display: table !important;
+	display: table-cell !important;
 }
 
 .nav-link {
@@ -115,9 +119,18 @@ body {
 	vertical-align: middle;
 }
 
+.nav-img {
+	display: table-cell !important;
+	vertical-align: middle;
+}
+
+.nav-img:before {
+	content: none !important;
+}
+
 .navbar {
+	height: 75px;
 	border-radius: 0 !important;
-	height: 100%;
 	border-bottom-style: solid !important;
 	border-bottom-width: 10px !important;
 	border-bottom-color: #7AADDF !important;
@@ -171,6 +184,8 @@ p:first-child, p:last-child {
 	position: absolute;
 	color: white;
 	padding-top: 25px !important;
+	padding-left: 20rem !important;
+	padding-right: 20rem !important;
 	width: 100%;
 	height: 250px;
 	background-color:#2262A2 !important;
@@ -179,6 +194,10 @@ p:first-child, p:last-child {
 	border-top-style: solid !important;
 	border-top-width: 10px !important;
 	border-top-color: #7AADDF !important;
+}
+
+.footer a {
+	color: white;
 }
 
 .buffer {
@@ -192,4 +211,18 @@ p:first-child, p:last-child {
 
 .main-content {
 	padding-bottom: 250px !important;
+}
+
+.profile-pic {
+	height: 50px;
+	width: 50px;
+	border-width: 2px;
+	border-radius: 50px;
+	border-style: solid;
+	border-color: #7AADDF;
+	display: inline-block !important;
+}
+
+.right-align {
+	text-align: right !important;
 }
