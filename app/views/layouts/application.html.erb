@@ -30,7 +30,7 @@
                         </div>
                     </div>
             	<% else %>
-            	  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => 'item nav-link' %>
+                  <a href='#' onclick='signinmodalShow()' class='item nav-link'>Sign in with Facebook</a>
             	<% end %>
             </div>
         </nav>
@@ -78,7 +78,26 @@
         // fades alert
         $(document).ready(function() {
             $('.alert').delay(2000).fadeOut(1000);
+
+            function signinmodalShow() {
+                console.log('test');
+                $('signinmodal').modal('show');
+            };
         });
+        function signinmodalShow() {
+                console.log('test');
+                $('#signinmodal').modal('show');
+            };
     </script>
+    <div id='signinmodal' class='ui modal'>
+        <i class='close icon'></i>
+        <div class='box' style='text-align:center;'>
+            <div class='text-wrapper modal-styles'>
+                <p class='item'>By using this website you agree to the <%= link_to 'Terms of Use', :terms_of_use %></p>
+                <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => 'item' %>
+                <p class='item'><br/></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
