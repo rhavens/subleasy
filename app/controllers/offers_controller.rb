@@ -6,7 +6,8 @@ class OffersController < AuthController
 	end
 
 	def show
-		@offer = Offer.find(params[:id])
+		@temp_offer = Offer.find(params[:id])
+		@offers = Offer.where(line1: @temp_offer.line1)
 	end
 
 	def new

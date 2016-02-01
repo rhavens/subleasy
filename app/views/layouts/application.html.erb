@@ -93,7 +93,8 @@
         <i class='close icon'></i>
         <div class='box' style='text-align:center;'>
             <div class='text-wrapper modal-styles'>
-                <p class='item'>By using this website you agree to the <%= link_to 'Terms of Use', :terms_of_use %></p>
+                <p class='item'><br/></p>
+                <p class='item'>By using this website you agree to the <%= link_to 'Terms of Use', :terms_of_use %> and the <%= link_to 'Privacy Policy', :privacy_policy %>.</p>
                 <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => 'item' %>
                 <p class='item'><br/></p>
             </div>

@@ -50,6 +50,16 @@
 		</div>
 	</div>
 	<% end %>
+
+	<div id='offersmodal' class='ui modal'>
+		<i class='close icon'></i>
+		<div class='box' style='text-align:center;'>
+			<div class='text-wrapper modal-styles'>
+				<%= render partial: 'offer', locals: {offer: offer} %>
+				<p class='item'><br/></p>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script type='text/javascript'>
@@ -90,7 +100,10 @@
 	   	  	});
 	   	  // modal listener
 		   	google.maps.event.addListener(marker, 'click', function() {
+		   			for (var i = 0; i < offers_filtered.length; i++)
 		   	    $(this.url + 'modal').modal('show');
+		   	  		// generate the modal dynamically instead of having all these dumb modal show comments... much better!!!
+
 		   	});
 		   	markers.push(marker)
    		}
@@ -198,7 +211,6 @@
 			}
 		});
 		$('#maxrentbutton').click(function() {
-			console.log('fuckin go')
 			return filterRent();
 		});
 		$('#datebutton').click(function() {
@@ -276,6 +288,43 @@
 		runFilters()
 		generateMarkersByParameter(offersfiltered, 'rent');
 		updateFilterByText()
+	}
+
+	function genOfferModal(offer) {
+		<div class="center" style="text-align:center;">
+			<h2><a><%= link_to offer.line1 + ' ' + offer.line2, offer_path(offer.id) %></a></h2>
+			<h3>
+				<div class="ui primary button">
+				    <i class="in cart icon"></i><a href='https://www.facebook.com/app_scoped_user_id/<%=  offer.user.uid %>' class="item"><span style="color:white;">Contact seller</span></a>
+				</div>
+			</h3>
+		</div>
+		<div class="ui grid">
+			<div class="ui eight wide column">
+				<div class="ui center" style="text-align:center;">	
+					<img src="<%= offer.image %>" alt="house" height=200px></img>
+				</div>
+				<h3>Address</h3>
+				<p class="item"><%= offer.line1 %> <%= offer.line2 %></p>
+				<p class="item"><%= offer.city %>, <%= offer.state %>. <%= offer.zip %></p>
+				<h3>Rental information</h3>
+				<p class="item">$<%= offer.rent %>/mo</p>
+				<p class="item"><%= offer.start_date.strftime('%a %d %b %Y') %> - <%= offer.end_date.strftime('%a %d %b %Y') %></p>
+			</div>
+			<div class="ui eight wide column">
+				<h3>Utility information</h3>
+				<p class="item">Water: <%= offer.water ? 'Yes' : 'No' %></p>
+				<p class="item">Internet: <%= offer.internet ? 'Yes' : 'No' %></p>
+				<p class="item">Electric: <%= offer.electric ? 'Yes' : 'No' %></p>
+				<p class="item">Heat: <%= offer.heat ? 'Yes' : 'No' %></p>
+				<p class="item">Gas: <%= offer.gas ? 'Yes' : 'No' %></p>
+				<h3>Other</h3>
+				<p class="item">Washer/dryer? <%= offer.washdry ? 'Yes' : 'No' %></p>
+				<p class="item">Air conditioning? <%= offer.aircond ? 'Yes' : 'No' %></p>
+				<p class="item">Handicap? <%= offer.handicap ? 'Yes' : 'No' %></p>
+				<p class="item">Parking? <%= offer.parking ? 'Yes' : 'No' %></p>
+			</div>
+		</div>
 	}
 
 </script>
