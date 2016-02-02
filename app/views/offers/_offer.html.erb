@@ -16,19 +16,40 @@
 		<p class="item"><%= offer.city %>, <%= offer.state %>. <%= offer.zip %></p>
 		<h3>Rental information</h3>
 		<p class="item">$<%= offer.rent %>/mo</p>
-		<p class="item"><%= offer.start_date.strftime('%a %d %b %Y') %> - <%= offer.end_date.strftime('%a %d %b %Y') %></p>
+		<p class="item" style="margin-top: 0px;"><%= offer.start_date.strftime('%a %d %b %Y') %> - <%= offer.end_date.strftime('%a %d %b %Y') %></p>
 	</div>
 	<div class="ui eight wide column">
-		<h3>Utility information</h3>
-		<p class="item">Water: <%= offer.water ? 'Yes' : 'No' %></p>
-		<p class="item">Internet: <%= offer.internet ? 'Yes' : 'No' %></p>
-		<p class="item">Electric: <%= offer.electric ? 'Yes' : 'No' %></p>
-		<p class="item">Heat: <%= offer.heat ? 'Yes' : 'No' %></p>
-		<p class="item">Gas: <%= offer.gas ? 'Yes' : 'No' %></p>
-		<h3>Other</h3>
-		<p class="item">Washer/dryer? <%= offer.washdry ? 'Yes' : 'No' %></p>
-		<p class="item">Air conditioning? <%= offer.aircond ? 'Yes' : 'No' %></p>
-		<p class="item">Handicap? <%= offer.handicap ? 'Yes' : 'No' %></p>
-		<p class="item no-top-margin">Parking? <%= offer.parking ? 'Yes' : 'No' %></p>
+		<p style="display:none;"></p>
+		<h3 class="no-top-margin">Description</h3>
+		<p class="item" style="word-wrap: break-word;"><%= offer.description %></p>
+		<h3 class="no-top-margin">Utility information</h3>
+		<table class="item" style="margin-bottom: 1rem;">
+			<tr>
+				<td>Water:</td><td><%= offer.water ? 'Yes' : 'No' %></td>
+				<td>Internet:</td><td><%= offer.internet ? 'Yes' : 'No' %></td>
+			</tr>
+			<tr>
+				<td>Electric:</td><td><%= offer.electric ? 'Yes' : 'No' %></td>
+				<td>Heat:</td><td><%= offer.heat ? 'Yes' : 'No' %></td>
+			</tr>
+			<tr>
+				<td>Gas:</td><td><%= offer.gas ? 'Yes' : 'No' %></td>
+			</tr>
+		</table>
+		<h3 class="no-top-margin">Other</h3>
+		<table class="item">
+			<tr>
+				<td>Washer/dryer?</td><td><%= offer.washdry ? 'Yes' : 'No' %></td>
+			</tr>
+			<tr>
+				<td>Air conditioning?</td><td><%= offer.aircond ? 'Yes' : 'No' %></td>
+			</tr>
+			<tr>
+				<td>Handicap?</td><td><%= offer.handicap ? 'Yes' : 'No' %></td>
+			</tr>
+			<tr>
+				<td>Parking?</td><td><%= offer.parking ? 'Yes' : 'No' %></td>
+			</tr>
+		</table>
 	</div>
 </div>

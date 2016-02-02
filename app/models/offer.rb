@@ -10,7 +10,7 @@ class Offer < ActiveRecord::Base
 
 	validates_length_of :description, :maximum => 300
 	validates_length_of :line1, :maximum => 100
-	validates_length_of :lin2, :maximum => 100
+	validates_length_of :line2, :maximum => 100
 	validates_length_of :city, :maximum => 50
 	validates_length_of :image, :maximum => 255
 	
@@ -23,9 +23,9 @@ class Offer < ActiveRecord::Base
 
 	def squish_whitespace
 		self.image = self.image.squish()
-		self.line1 = self.line1.squish()
+		self.line1 = self.line1.squish().split.map(&:capitalize).join(' ')
 		self.line2 = self.line2.squish()
-		self.city = self.city.squish()
+		self.city = self.city.squish().split.map(&:capitalize).join(' ')
 	end
 
 	def full_address
