@@ -2,10 +2,18 @@ class Offer < ActiveRecord::Base
 	belongs_to :user, class_name: "User", :foreign_key => "user_id"
 
 	before_validation :squish_whitespace
+
 	validates_presence_of :line1, :city, :state, :zip, :rent, :start_date,
-												:end_date, :school
+												:end_date, :school, :description
 	validates :image, :format => URI::regexp(%w(http https))
 	validate :dates_make_sense 
+
+	validates_length_of :description, :maximum => 300
+	validates_length_of :line1, :maximum => 100
+	validates_length_of :lin2, :maximum => 100
+	validates_length_of :city, :maximum => 50
+	validates_length_of :image, :maximum => 255
+	
 	geocoded_by :full_address
 	after_validation :geocode
 
@@ -21,6 +29,6 @@ class Offer < ActiveRecord::Base
 	end
 
 	def full_address
-		return (self.line1 + " " + self.line2 + " " + self.city + " " + self.state).squish()
+		return (self.line1 + " " + self.city + " " + self.state).squish()
 	end		
 end

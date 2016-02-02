@@ -54,7 +54,7 @@ class OffersController < AuthController
 			params.require(:offer).permit(:user,:image,
 					:line1,:line2,:city,:state,:zip,:rent,:start_date,
 					:end_date,:water,:electric,:gas,:heat,:internet,:washdry,
-					:aircond,:handicap,:parking,:interested,:school)
+					:aircond,:handicap,:parking,:interested,:school,:description)
 		end
 
 		def correct_user
