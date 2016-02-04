@@ -3,8 +3,11 @@ class Offer < ActiveRecord::Base
 
 	before_validation :squish_whitespace
 
-	validates_presence_of :line1, :city, :state, :zip, :rent, :start_date,
-												:end_date, :school, :description
+	validates_presence_of :user,:image,
+					:line1,:city,:state,:zip,:rent,:start_date,
+					:end_date,:water,:electric,:gas,:heat,:internet,:washdry,
+					:aircond,:handicap,:parking,:interested,:school,:description,
+					:furnished
 	validates :image, :format => URI::regexp(%w(http https))
 	validate :dates_make_sense 
 

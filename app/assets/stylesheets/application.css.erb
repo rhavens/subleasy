@@ -63,8 +63,9 @@ nav {
 	z-index: 9999999;
 }
 
-.no-margin {
-	margin: 0 !important;
+.nomargin {
+	margin: 0;
+	padding: 0;
 }
 
 .fixed {
@@ -229,4 +230,25 @@ p:first-child, p:last-child {
 
 .paragraph {
 	width: 700px;
+}
+
+.image-holder {
+	height: 200px;
+	width: 300px;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.image-holder > img {
+	position: absolute;
+	top: 50%;
+	max-height: 200px;
+	display: block;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+}
+
+tr.buffered > td {
+	padding-bottom: .5rem;
 }

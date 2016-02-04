@@ -8,8 +8,8 @@
 </div>
 <div class="ui grid">
 	<div class="ui eight wide column">
-		<div class="ui center" style="text-align:center;">	
-			<img src="<%= offer.image %>" alt="house" height=200px></img>
+		<div class="ui center image-holder" style="text-align:center;">	
+			<img src="<%= offer.image %>" alt="house" min-height='200px'></img>
 		</div>
 		<h3>Address</h3>
 		<p class="item"><%= offer.line1 %> <%= offer.line2 %></p>
@@ -23,32 +23,39 @@
 		<h3 class="no-top-margin">Description</h3>
 		<p class="item" style="word-wrap: break-word;"><%= offer.description %></p>
 		<h3 class="no-top-margin">Utility information</h3>
-		<table class="item" style="margin-bottom: 1rem;">
-			<tr>
+		<table class="item" style="line-height: 1.33rem; margin-bottom: 1rem;">
+			<tr class="buffered">
 				<td>Water:</td><td><%= offer.water ? 'Yes' : 'No' %></td>
-				<td>Internet:</td><td><%= offer.internet ? 'Yes' : 'No' %></td>
 			</tr>
-			<tr>
+			<tr class="buffered">
+				<p><td>Internet:</td><td><%= offer.internet ? 'Yes' : 'No' %></td></p>
+			</tr>
+			<tr class="buffered">
 				<td>Electric:</td><td><%= offer.electric ? 'Yes' : 'No' %></td>
+			</tr>
+			<tr class="buffered">
 				<td>Heat:</td><td><%= offer.heat ? 'Yes' : 'No' %></td>
 			</tr>
-			<tr>
+			<tr class="buffered">
 				<td>Gas:</td><td><%= offer.gas ? 'Yes' : 'No' %></td>
 			</tr>
 		</table>
 		<h3 class="no-top-margin">Other</h3>
 		<table class="item">
-			<tr>
+			<tr class="buffered">
 				<td>Washer/dryer?</td><td><%= offer.washdry ? 'Yes' : 'No' %></td>
 			</tr>
-			<tr>
+			<tr class="buffered">
 				<td>Air conditioning?</td><td><%= offer.aircond ? 'Yes' : 'No' %></td>
 			</tr>
-			<tr>
+			<tr class="buffered">
 				<td>Handicap?</td><td><%= offer.handicap ? 'Yes' : 'No' %></td>
 			</tr>
-			<tr>
+			<tr class="buffered">
 				<td>Parking?</td><td><%= offer.parking ? 'Yes' : 'No' %></td>
+			</tr>
+			<tr class="buffered">
+				<td>Furnished?</td><td><%= offer.furnished ? 'Yes' : 'No' %></td>
 			</tr>
 		</table>
 	</div>
