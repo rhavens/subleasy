@@ -22,6 +22,13 @@ module Subleasy
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # asset paths
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    # fixes rails from overriding classes with field_with_errors class
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+      html_tag
+    }
   end
 end

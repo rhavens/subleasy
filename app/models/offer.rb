@@ -5,9 +5,7 @@ class Offer < ActiveRecord::Base
 
 	validates_presence_of :user,:image,
 					:line1,:city,:state,:zip,:rent,:start_date,
-					:end_date,:water,:electric,:gas,:heat,:internet,:washdry,
-					:aircond,:handicap,:parking,:interested,:school,:description,
-					:furnished
+					:end_date,:school,:description
 	validates :image, :format => URI::regexp(%w(http https))
 	validate :dates_make_sense 
 
