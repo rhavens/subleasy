@@ -38,20 +38,25 @@
 	</div>
 	<p class='item'><br><br></p>
 </div>
-
 	<!-- MODALS -->
 <div>
  	<% @offers.each do |offer| %>
- 	<div id='<%= offer.id %>modal' class='ui modal'>
- 		<i class='close icon'></i>
-		<div class='box' style='text-align:center;'>
-			<div class='text-wrapper modal-styles'>
-				<%= render partial: 'offer', locals: {offer: offer} %>
-				<p class='item'><br/></p>
-			</div>
+ 	<div id='<%= offer.id %>modal' class='ui' style='display:none; text-align:center;'>
+		<div class='text-wrapper modal-styles'>
+			<%= render partial: 'offer', locals: {offer: offer} %>
+			<p class='item'><br/></p>
 		</div>
 	</div>
 	<% end %>
+</div>
+
+<!-- This is the modal that is shown. Data is appended to inner div. -->
+<div>
+ 	<div id='offersmodal' class='ui modal'>
+ 		<i class='close icon'></i>
+		<div style='text-align:center;'>
+		</div>
+	</div>
 </div>
 
 <script type='text/javascript'>
@@ -84,16 +89,40 @@
 	   	        new google.maps.Point(0,0),
 	   	        new google.maps.Point(10, 34));
 	  	  	var marker = new google.maps.Marker({
-		    	position: new google.maps.LatLng(array[i].latitude, array[i].longitude),
-		    	map: map,
-		    	icon: pinImage,
-		    	url: '#' + array[i].id.toString(),
-		    	title: array[i].line1
+			    	position: new google.maps.LatLng(array[i].latitude, array[i].longitude),
+			    	map: map,
+			    	icon: pinImage,
+			    	url: '#' + array[i].id.toString(),
+			    	title: array[i].line1
 	   	  	});
 	   	  // modal listener
 		   	google.maps.event.addListener(marker, 'click', function() {
-		   			for (var i = 0; i < offers_filtered.length; i++)
-		   	    $(this.url + 'modal').modal('show');
+		   			//for (var i = 0; i < offers_filtered.length; i++)
+		   			var offersmodal = $('#offersmodal');
+		   			var offersmodal_inner = $('#offersmodal > div');
+		   			offersmodal_inner.empty();
+		   			// if we have multiple offers display text indicating so
+
+		   			offers_for_modal = genOfferModal(this.title);
+		   			console.log(offers_for_modal);
+		   			if (offers_for_modal.length > 1) {
+		   				console.log("TODO");
+		   				// if (offers_for_modal.length > 1) {
+		   				// 	offersmodal.modal('show');
+		   				// 	$('#offersmodal > div').append("<p class='item'><br/>There are multiple sublets available at this location. Loading...<br/></p>").delay(2000).delay(10, function() { $('#offersmodal > div > p').fadeOut('slow', function () { $('#offersmodal > div').empty(function() { for (var i = 0; i < offers_for_modal.length; i++) {
+		   				// 				// this is the rendered partial
+		   				// 	    	var elem = $('#' + offers_for_modal[i].id.toString() + 'modal > div');
+		   				// 	    	elem.clone().appendTo(offersmodal_inner);
+		   				// 	     }}) })});
+		   			}
+		   			for (var i = 0; i < offers_for_modal.length; i++) {
+		   				// this is the rendered partial
+		   	    	var elem = $('#' + offers_for_modal[i].id.toString() + 'modal > div');
+		   	    	elem.clone().appendTo(offersmodal_inner);
+		   	    }
+		   	    offersmodal.modal('show');
+		   	    	// if there are multiple modals to show, then pull the
+		   	    	// text for the other modals and 
 		   	  		// generate the modal dynamically instead of having all these dumb modal show comments... much better!!!
 
 		   	});
@@ -171,6 +200,7 @@
 	offers = <%=raw @offers.to_json %>
 	offers = sortByKey(offers, 'rent')
 	offers_filtered = offers
+	offers_for_modal = offers_filtered
 	bRentFiltered = false
 	bDateFiltered = false
 	sRentFilter = ''
@@ -282,10 +312,10 @@
 		updateFilterByText()
 	}
 
-	function genOfferModal(offer) {
-		// TODO
+	function genOfferModal(address) {
+		offers_for_modal = offers_filtered.filter(function(offer){return address == offer.line1})
+		return offers_for_modal
 	}
-
 </script>
 
 <!-- var pinColor = 'FE7569';
