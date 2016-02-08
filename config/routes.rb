@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   get '/about' => 'home#about'
   get '/terms-of-use' => 'home#termsofuse'
   get '/contact' => 'home#contact'
-  get '/fetch_offers' => 'offers#from_index', as: 'fetch_offers'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
