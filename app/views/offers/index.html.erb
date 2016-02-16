@@ -43,7 +43,7 @@
  	<% @offers.each do |offer| %>
  	<div id='<%= offer.id %>modal' class='ui' style='display:none; text-align:center;'>
 		<div class='text-wrapper modal-styles'>
-			<%= render partial: 'offer', locals: {offer: offer} %>
+			<%= render partial: 'offer', locals: {offer: offer, user: offer.user } %>
 			<p class='item'><br/></p>
 		</div>
 	</div>
