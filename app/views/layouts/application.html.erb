@@ -20,7 +20,7 @@
                 <%= link_to '<span class="vert"><i class="icon shop"></i>Sublets</span>'.html_safe, :offers, 'data-no-turbolink' => true, :class=>"item nav-link" %>
                 <%= link_to '<span class="vert"><i class="icon home"></i>New Offer</span>'.html_safe, new_offer_path, :class=>"item nav-link" %>
                 <% if user_signed_in? %>
-                    <div class="ui simple nav-link dropdown item">
+                    <div class="ui simple item nav-link dropdown">
                         <span class='vert'><%= current_user.name.split.first %><i class="dropdown icon"></i>
                         <img class="ui nav-img zero-pad profile-pic" src='http://graph.facebook.com/<%= current_user.uid %>/picture'></img>
                         </span>
