@@ -25,9 +25,10 @@
                         <img class="ui nav-img zero-pad profile-pic" src='http://graph.facebook.com/<%= current_user.uid %>/picture'></img>
                         </span>
                         <div class="item menu zero-pad" style="background-color:white;">
-                          <%= link_to '<i class="icon setting"></i>My Offers'.html_safe, current_user, :class=>"item nav-link" %>
-                          <%= link_to 'Account', edit_user_registration_path, :class => 'item nav-link' %>
-                          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'item nav-link' %>
+                            <span class='ui item nav-link' style='padding-right: 0 !important;'><i class="nomargin setting icon"></i></span>
+                          <%= link_to 'My Offers'.html_safe, current_user, :class=>'ui item nav-link' %>
+                          <%= link_to 'Account', edit_user_registration_path, :class => 'ui item nav-link' %>
+                          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'ui item nav-link' %>
                         </div>
                     </div>
             	<% else %>
