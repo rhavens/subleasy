@@ -1,6 +1,9 @@
 class Offer < ActiveRecord::Base
 	belongs_to :user, class_name: "User", :foreign_key => "user_id"
 
+	# added like support
+	has_many :likes
+
 	before_validation :squish_whitespace
 
 	validates_presence_of :user,:image,

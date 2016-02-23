@@ -7,13 +7,12 @@ class User < ActiveRecord::Base
     has_many :offers, dependent: :destroy, class_name: 'Offer'
     validates_format_of :email, :with => /\A^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+[a-zA-Z0-9._%+-]\.+[a-zA-Z0-9._%+-]+$\Z/i
 
-    # def self.from_omniauth(auth)
-    #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    #     user.password = Devise.friendly_token[0,20]
-    #     user.name = auth.info.name   # assuming the user model has a name
-    #     user.email = auth.info.email
-    #   end
-    # end
+  # added like support
+  has_many :likes
+
+  def likes?(offer)
+    offer.likes.where(user_id: id).any?
+  end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
