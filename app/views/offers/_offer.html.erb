@@ -2,9 +2,11 @@
 	<h2><a><%= link_to offer.line1 + ' ' + offer.line2, offer_path(offer.id) %></a></h2>
 	<h3>
 		<div class='ui primary button'>
-		    <i class='in cart icon'></i><a href='https://www.facebook.com/app_scoped_user_id/<%=  offer.user.uid %>' class='item'><span style='color:white;'>Contact Seller</span></a>
+		    <i class='in cart icon'></i><a href='https://www.facebook.com/app_scoped_user_id/<%= offer.user.uid %>' class='item'><span style='color:white;'>Contact Seller</span></a>
 		</div>
-		<%= render partial: 'offers/likes', locals: {offer: offer} %>
+		<div id='offer_<%= offer.id %>_likes'>
+			<%= render partial: 'offers/likes', locals: {offer: offer} %>
+		</div>
 	</h3>
 </div>
 <div class='ui grid'>

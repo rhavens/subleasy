@@ -1,5 +1,4 @@
-class Offers::LikesController < ApplicationController
-  before_action :authenticate_user!
+class Offers::LikesController < AuthController
   before_action :set_offer
 
   def create

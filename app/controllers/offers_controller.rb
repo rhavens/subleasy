@@ -1,13 +1,13 @@
 class OffersController < AuthController
 	before_action :correct_user, only: [:edit, :update, :destroy]
+	before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@offers = Offer.all
 	end
 
 	def show
-		@temp_offer = Offer.find(params[:id])
-		@offers = Offer.where(line1: @temp_offer.line1)
+		@offers = Offer.where(line1: @offer.line1)
 	end
 
 	def new
@@ -15,41 +15,67 @@ class OffersController < AuthController
 	end
 
 	def edit
-		@offer = Offer.find(params[:id])
 	end
 
 	def create
 		@offer = current_user.offers.build(offer_params)
 
-		if @offer.save
-			flash[:success] = "Success! Your offer has been posted."
-			redirect_to @offer
-		else
-			flash[:error] = @offer.errors.full_messages
-			render :new
+		respond_to do |format|
+			if @offer.save
+				flash[:success] = "Success! Your offer has been posted."
+				format.html {redirect_to @offer }
+				format.json {render :show, status: :created, location: @post }
+			else
+				flash[:error] = @offer.errors.full_messages
+				format.html { render :new }
+				format.json { render json: @offer.errors.full_messages, status: :unprocessable_entity }
+			end
 		end
+		# if @offer.save
+		# 	flash[:success] = "Success! Your offer has been posted."
+		# 	redirect_to @offer
+		# else
+		# 	flash[:error] = @offer.errors.full_messages
+		# 	render :new
+		# end
 	end
 
 	def update
-		@offer = Offer.find(params[:id])
-
-		if @offer.update(offer_params)
-			flash[:success] = "Success! Your offer has been updated."
-			redirect_to @offer
-		else
-			flash[:error] = @offer.errors.full_messages
-			render :edit
+		respond_to do |format|
+			if @offer.update(offer_params)
+				flash[:success] = "Success! Your offer has been updated."
+				format.html { redirect_to @offer }
+				format.json { render :show, status: :ok, location: @offer }
+			else
+				flash[:error] = @offer.errors.full_messages
+				format.html { render :edit }
+				format.json { render json: @offer.errors.full_messages, status: :unprocessable_entity }
+			end
 		end
+
+		# if @offer.update(offer_params)
+		# 	flash[:success] = "Success! Your offer has been updated."
+		# 	redirect_to @offer
+		# else
+		# 	flash[:error] = @offer.errors.full_messages
+		# 	render :edit
+		# end
 	end
 
 	def destroy
-		@offer = Offer.find(params[:id])
 		@offer.destroy
-
-		redirect_to offers_path
+		respond_to do |format|
+			flash[:success] = "Offer was successfully deleted."
+			format.html { redirect_to offers_path }
+			format.json { head :no_content }
+		end
 	end
 
 	private
+		def set_offer
+			@offer = Offer.find(params[:id])
+		end
+
 		def offer_params
 			params.require(:offer).permit(:user,:image,
 					:line1,:line2,:city,:state,:zip,:rent,:start_date,
