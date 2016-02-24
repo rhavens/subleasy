@@ -11,8 +11,8 @@ Added favicon.ico
 
 ### v0.1
 
-Added likes - users can now say they're interested in a particular sublet
-New styling in the navbar
+Added likes - users can now say they're interested in a particular sublet.  
+New styling in the navbar.
 
 ### v0 (Alpha)
 
