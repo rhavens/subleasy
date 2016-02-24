@@ -1,6 +1,7 @@
-class OffersController < AuthController
+class OffersController < ApplicationController
 	before_action :correct_user, only: [:edit, :update, :destroy]
 	before_action :set_offer, only: [:show, :edit, :update, :destroy]
+	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
 		@offers = Offer.all
