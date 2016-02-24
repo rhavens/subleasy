@@ -4,7 +4,7 @@
 		<div class='ui primary button'>
 		    <i class='in cart icon'></i><a href='https://www.facebook.com/app_scoped_user_id/<%= offer.user.uid %>' class='item'><span style='color:white;'>Contact Seller</span></a>
 		</div>
-		<div id='offer_<%= offer.id %>_likes'>
+		<div class='offer_<%= offer.id %>_likes' style='display:inline-block'>
 			<%= render partial: 'offers/likes', locals: {offer: offer} %>
 		</div>
 	</h3>
