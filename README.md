@@ -5,6 +5,10 @@ A platform for posting sublets. For students, by students.
 
 Currently in Alpha.
 
+### v0.1.2
+
+Removed authentication requirement for viewing sublet listings
+
 ### v0.1.1
 
 Added favicon.ico
