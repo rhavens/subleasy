@@ -1,7 +1,21 @@
-<% if user_signed_in? && current_user.likes?(offer) %>
-  <%= link_to "Unlike", offer_like_path(offer), method: :delete, remote: true %>
+<% if user_signed_in? %>
+	<% if current_user.likes?(offer) %>
+  	<div class='ui primary button'>
+  			<%= offer.likes.count %>
+  	    <i class="thumbs outline up icon"></i>
+  	    <%= link_to "<span style='color:white;'>I'm Interested!</span>".html_safe, offer_like_path(offer), method: :delete, remote: true, :class=>'item' %>
+  	</div>
+  <% else %>
+  	<div class='ui primary button'>
+  	    <%= offer.likes.count %>
+  	    <i class="thumbs outline up icon"></i>
+  	    <%= link_to "<span style='color:white;'>Interested?</span>".html_safe, offer_like_path(offer), method: :post, remote: true, :class=>'item' %>
+  	</div>	
+  <% end %>
 <% else %>
-  <%= link_to "Like", offer_like_path(offer), method: :post, remote: true %>
+	<div class='ui primary button'>
+		<%= offer.likes.count %>
+    <i class="thumbs outline up icon"></i>
+    <a href='https://www.facebook.com/app_scoped_user_id/<%=  offer.user.uid %>' class='item'><span style='color:white;'>Interested?</span></a>
+	</div>
 <% end %>
-
-<%= offer.likes.count %>
