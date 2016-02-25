@@ -12,7 +12,7 @@ class Offer < ActiveRecord::Base
 	validates :image, :format => URI::regexp(%w(http https))
 	validate :dates_make_sense 
 
-	validates_length_of :description, :maximum => 300
+	validates_length_of :description, :maximum => 750
 	validates_length_of :line1, :maximum => 100
 	validates_length_of :line2, :maximum => 100
 	validates_length_of :city, :maximum => 50
