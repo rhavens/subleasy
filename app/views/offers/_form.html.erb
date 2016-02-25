@@ -36,10 +36,10 @@
 			<td class="item"><%= f.number_field :rent, within: 0...9999, :required => true %></td>
 		</tr>
 		<tr>
-			<td class="item">Description (max 300 characters)</td>
+			<td class="item">Description (max 750 characters)</td>
 		</tr>
 		<tr>
-			<td class="item"><%= f.text_area :description, :maxlength => '300', size: '40x5', :required => true %></td>
+			<td class="item"><%= f.text_area :description, :maxlength => '750', size: '40x5', :required => true %></td>
 		</tr>
 		<tr>
 			<td class="item">Earliest potential start date</td>
