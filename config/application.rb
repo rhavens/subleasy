@@ -30,5 +30,7 @@ module Subleasy
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
       html_tag
     }
+
+    config.action_dispatch.default_headers['X-Frame-Options'] = "ALLOW-FROM http://subleasy.com"
   end
 end
