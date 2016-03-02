@@ -1,9 +1,13 @@
-# subleasy
-A platform for posting sublets. For students, by students.
+# Subleasy
+A simple solution for campus subletting. For students, by students.
 
 ## Release notes:
 
 Currently in Alpha.
+
+### v0.1.4
+
+Moved URL to www.subleasy.com, added notice for users at the wrong URL
 
 ### v0.1.3
 

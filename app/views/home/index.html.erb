@@ -25,11 +25,18 @@
     <i class='close icon'></i>
     <div class='box' style='text-align:center;'>
         <div class='text-wrapper modal-styles'>
+        	<% if request.base_url == 'http://www.subleasy.com' %>
             <p class='item'><br/></p>
             <p class='item'>Welcome to Subleasy!</p>
             <p class='item'>Check out our new "Interested" feature! Now you can see just how many users want to learn more about your sublet.</p>
             <p class='item'>We just launched so please report any errors and share any comments/compliments you may have by contacting me on <a class='item' href='https://www.facebook.com/ryan.havens.319'>Facebook</a> or by email at <a class='item' href='#'>ryan.d.havens@gmail.com</a></p>
             <p class='item'><br/></p>
+          <% else %>
+          	<p class='item'><br/></p>
+          	<h1 style='font-size: 500% !important;' class='item'>We've moved!</h1>
+          	<a class='item' href='http://www.subleasy.com'>Check us out at http://www.subleasy.com!</a>
+          	<p class='item'><br/></p>
+          <% end %>
         </div>
     </div>
 </div>
