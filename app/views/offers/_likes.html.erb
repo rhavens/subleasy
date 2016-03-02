@@ -3,19 +3,19 @@
   	<div class='ui primary button'>
   			<%= offer.likes.count %>
   	    <i class="thumbs outline up icon"></i>
-  	    <%= link_to "<span style='color:white;'>I'm Interested!</span>".html_safe, offer_like_path(offer), method: :delete, remote: true, :class=>'item' %>
+  	    <%= link_to "<span style='color:white;'>Liked!</span>".html_safe, offer_like_path(offer), method: :delete, remote: true, :class=>'item' %>
   	</div>
   <% else %>
   	<div class='ui primary button'>
   	    <%= offer.likes.count %>
   	    <i class="thumbs outline up icon"></i>
-  	    <%= link_to "<span style='color:white;'>Interested?</span>".html_safe, offer_like_path(offer), method: :post, remote: true, :class=>'item' %>
+  	    <%= link_to "<span style='color:white;'>Like this sublet?</span>".html_safe, offer_like_path(offer), method: :post, remote: true, :class=>'item' %>
   	</div>	
   <% end %>
 <% else %>
 	<div class='ui primary button'>
 		<%= offer.likes.count %>
     <i class="thumbs outline up icon"></i>
-    <a href='#' onclick='signinmodalShow()' class='item'><span style='color:white;'>Interested?</span></a>
+    <a href='#' onclick='signinmodalShow()' class='item'><span style='color:white;'>Like this sublet?</span></a>
 	</div>
 <% end %>
