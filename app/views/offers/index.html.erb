@@ -103,7 +103,8 @@
 		   			offersmodal_inner.empty();
 		   			// if we have multiple offers display text indicating so
 
-		   			offers_for_modal = genOfferModal(this.title);
+		   			offers_for_modal = genOfferModal(this.position.lat(), this.position.lng());
+		   			console.log(this.position.lat(),this.position.lng())
 		   			console.log(offers_for_modal);
 		   			if (offers_for_modal.length > 1) {
 		   				console.log("TODO");
@@ -207,6 +208,7 @@
 	sRentFilter = ''
 	sStartDateFilter = ''
 	sEndDateFilter = ''
+	const TOLERANCE = 0.000001 // Floating point issues with lat/lng
 	// TODO mismatched start/end date, illogical start/end date
 
 
@@ -313,8 +315,10 @@
 		updateFilterByText()
 	}
 
-	function genOfferModal(address) {
-		offers_for_modal = offers_filtered.filter(function(offer){return address == offer.line1})
+	function genOfferModal(lat,lng) {
+		offers_for_modal = offers_filtered.filter(function(offer){
+				return (Math.abs(lat-offer.latitude)+Math.abs(lng-offer.longitude))<TOLERANCE
+			})
 		return offers_for_modal
 	}
 </script>
