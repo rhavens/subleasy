@@ -8,7 +8,8 @@ class OffersController < AuthController
 	end
 
 	def show
-		@offers = Offer.where(line1: @offer.line1)
+		#@offers = Offer.where(latitude: @offer.latitude,longitude: @offer.longitude)
+		@offer = Offer.find(params[:id])
 	end
 
 	def new
