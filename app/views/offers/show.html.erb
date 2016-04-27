@@ -1,15 +1,13 @@
 <p class='item no-top-margin'><br/></p>
 <div class="wrapper" style="text-align:center;margin:auto;">
-	<% @offers.each do |offer| %>
 	<div class="text-wrapper" style="text-align:left;border-style:solid;padding-left:50px;padding-right:50px;padding-bottom:50px;">
 		<div class="center" style="text-align:center;">
 			<h3><%= link_to 'Back to main listings', :offers, 'data-no-turbolink' => true %></h3>
 			
-			<% if (user_signed_in? && (current_user == offer.user || current_user.uid == "473418502829853")) %>
-				<h3><%= link_to 'Edit this offer', edit_offer_path(offer.id) %> | <%= link_to 'Delete', offer_path(offer.id), method: :delete, data: { confirm: 'Are you sure?' } %></h3>
+			<% if (user_signed_in? && (current_user == @offer.user || current_user.uid == "473418502829853")) %>
+				<h3><%= link_to 'Edit this offer', edit_offer_path(@offer.id) %> | <%= link_to 'Delete', offer_path(@offer.id), method: :delete, data: { confirm: 'Are you sure?' } %></h3>
 			<% end %>
 		</div>
-		<%= render partial: 'offer', locals: {offer: offer} %>
+		<%= render partial: 'offer', locals: {offer: @offer} %>
 	</div>
-	<% end %>
 </div>

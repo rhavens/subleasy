@@ -104,10 +104,10 @@
 		   			// if we have multiple offers display text indicating so
 
 		   			offers_for_modal = genOfferModal(this.position.lat(), this.position.lng());
-		   			console.log(this.position.lat(),this.position.lng())
-		   			console.log(offers_for_modal);
+		   			//console.log(this.position.lat(),this.position.lng())
+		   			//console.log(offers_for_modal);
 		   			if (offers_for_modal.length > 1) {
-		   				console.log("TODO");
+		   				// TODO make this a popup that goes away
 		   				offersmodal_inner.append("<p class='item' style='padding-top:1em; margin-bottom:1em;'>There are multiple sublets available at this location. Scroll down to view.</p>");
 		   				// if (offers_for_modal.length > 1) {
 		   				// 	offersmodal.modal('show');
