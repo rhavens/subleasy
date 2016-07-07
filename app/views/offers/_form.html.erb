@@ -1,5 +1,6 @@
 <%= form_for @offer do |f| %>
-	<%= f.hidden_field :interested, value: 0 %>
+	<%= f.hidden_field :latitude, value: 0 %>
+	<%= f.hidden_field :longitude, value: 0 %>
   	<table>
   		<tr>
   			<td class="item">Link to photo</td>
@@ -79,7 +80,51 @@
 	</table>
 	<table>
 		<tr>
-    		<td class="item"><%= f.submit %></td>
+    		<td id="submit-button" class="item"><%= f.submit %></td>
+    		<script>
+    			$(function() {
+    				$('#submit-button').click(function(e) {
+    					e.preventDefault()
+    					geocoder = new google.maps.Geocoder();
+    					geocoder.geocode({'address':$('#offer_line1').val()+' '+$('#offer_city').val()+' '+$('#offer_state').val()}, function(results, status) {
+    						console.log(status)
+    						if (status == google.maps.GeocoderStatus.OK) {
+    							if (results[0].types.indexOf("street_address") !== -1) {
+	    							// possible idea iterate through address components? 
+	    							$('#offer_latitude').val(results[0].geometry.location.lat())
+	    							$('#offer_longitude').val(results[0].geometry.location.lng())
+	    							var addr = results[0].formatted_address.split(',').map($.trim)
+	    							$('#offer_line1').val(addr[0])
+	    							$('#offer_city').val(addr[1])
+	    							// WE OK WOWOWOW
+	    							//return;
+	    							// ackshully no we aint
+	    							console.log(results[0])
+	    							e.preventDefault()
+	    						}
+	    						else {
+	    							console.log("if you're getting an error here when you don't think there should be one, send me an email with the results object and your input")
+	    							console.log(results)
+	    							$("<div class='ui modal'><i class='close icon'></i>\
+	    							<div class='box' style='text-align:center;'><div class='text-wrapper modal-styles'>\
+									<p class='item'><br/></p>\
+									<p class='item'>Whoops! Something's wrong with your address. Double-check it and try again.</p>\
+									<p class='item'><br/></p></div></div></div>").appendTo($('body')).modal('show')
+									e.preventDefault();
+	    						}
+    						}
+    						else {
+    							$("<div class='ui modal'><i class='close icon'></i>\
+    							<div class='box' style='text-align:center;'><div class='text-wrapper modal-styles'>\
+								<p class='item'><br/></p>\
+								<p class='item'>Whoops! Something's wrong with your address. Double-check it and try again.</p>\
+								<p class='item'><br/></p></div></div></div>").appendTo($('body')).modal('show')
+								e.preventDefault();
+    						}
+    					})
+    				})
+    			})
+    		</script>
     	</tr>
 	</table>
 <% end %>

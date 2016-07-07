@@ -8,7 +8,7 @@ class Offer < ActiveRecord::Base
 
 	validates_presence_of :user,:image,
 					:line1,:city,:state,:zip,:rent,:start_date,
-					:end_date,:school,:description
+					:end_date,:school,:description,:latitude,:longitude
 	validates :image, :format => URI::regexp(%w(http https))
 	validate :dates_make_sense 
 
@@ -17,9 +17,6 @@ class Offer < ActiveRecord::Base
 	validates_length_of :line2, :maximum => 100
 	validates_length_of :city, :maximum => 50
 	validates_length_of :image, :maximum => 255
-	
-	geocoded_by :full_address
-	after_validation :geocode
 
 	def dates_make_sense
 		errors.add(:start_date, "and end date need to make logical sense") if (start_date < Date.today) || (start_date > end_date)
