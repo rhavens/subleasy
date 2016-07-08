@@ -1,48 +1,37 @@
 <%= form_for @offer do |f| %>
 	<%= f.hidden_field :interested, value: 0 %>
-  	<table>
-  		<tr>
-  			<td class="item">Link to photo</td>
-  			<td class="item">School</td>
-  		</tr>
-  		<tr>
-  			<td class="item"><%= f.text_field :image %></td>
-  			<td class="item"><%= f.select :school, options_for_select(supported_schools),{}, class:'form_control', :required => true %></td>
-  		</tr>
-	  	<tr>
-		  	<td class="item">Address Line 1</td>
-		    <td class="item">Address Line 2</td>
-		</tr>
-			<td class="item"><%= f.text_field :line1, :required => true %></td>
-		    <td class="item"><%= f.text_field :line2 %></td>
-		</tr>
-		<tr>
-		    <td class="item">City</td>
-		    <td class="item">State</td>
-		    <td class="item">Zip Code</td>
-		</tr>
-		<tr>
-			<td class="item"><%= f.text_field :city, :required => true %></td>
-		    <td class="item"><%= f.select :state, options_for_select(us_states),{}, class:'form_control', :required => true %></td>
-    		<td class="item"><%= f.number_field :zip, within: 0...99999, :required => true %></td>
-    	</tr>
-
-		<tr>
-			<td class="item">Monthly Rent</td>
-		</tr>
-	</table>
 	<table>
-		<tr>
-			<td class="item"><%= f.number_field :rent, within: 0...9999, :required => true %></td>
+  		<tr>
+  			<td class="item"><%= f.text_field :image, :placeholder => 'Link to photo for listing' %></td>
+  			<td class="item"><%= f.select :school, options_for_select(supported_schools),{}, class:'form_control', :required => true, :placeholder => 'School' %></td>
+  		</tr>
+  		<tr>
+			<td class="item"><%= f.text_field :line1, :required => true, :placeholder => 'Address Line 1' %></td>
+		    <td class="item"><%= f.text_field :line2, :placeholder => 'Address Line 2' %></td>
 		</tr>
 		<tr>
-			<td class="item">Description (max 750 characters)</td>
+			<td class="item"><%= f.text_field :city, :required => true, :placeholder => 'City' %></td>
+		    <td class="item"><%= f.select :state, options_for_select(us_states),{}, class:'form_control', :required => true, :placeholder => 'State' %></td>
+    		<td class="item"><%= f.number_field :zip, within: 0...99999, :required => true, :placeholder: 'Zip' %></td>
+    	</tr>
+	</table>
+	<table style="margin-top:40px;">
+		<tr>
+			<td class="item"><%= f.number_field :rent, within: 0...9999, :required => true, :placeholder => 'Rent' %></td>
 		</tr>
 		<tr>
-			<td class="item"><%= f.text_area :description, :maxlength => '750', size: '40x5', :required => true %></td>
+			<td class="item"><%= f.text_area :description, :maxlength => '750', size: '40x5', :required => true, :placeholder => 'Description (max 750 characters)' %></td>
 		</tr>
 		<tr>
 			<td class="item">Earliest potential start date</td>
+		</tr>
+		<tr>
+			<td class="item">
+				<%= f.date_field :start_date, :required => true %>
+			</td>
+		</tr>
+		<tr>
+			<td class="item">Latest potential end date</td>
 		</tr>
 		<tr>
 			<td class="item">
@@ -65,7 +54,12 @@
 	</table>
 	<table>
 		<tr>
-			<p class="item" style="margin-bottom:5px;"><%= f.check_box :water %>Water <%= f.check_box :electric %>Electric <%= f.check_box :gas %> Gas <%= f.check_box :heat %> Heat <%= f.check_box :internet %> Internet</p>
+			<p class="item" style="margin-bottom:5px;">
+				<%= f.check_box :water %><%= f.label :water %>Water
+				<%= f.check_box :electric %><%= f.label :electric %>Electric
+				<%= f.check_box :gas %><%= f.label :gas %>Gas
+				<%= f.check_box :heat %><%= f.label :heat %>Heat
+				<%= f.check_box :internet %><%= f.label :internet %>Internet</p>
 		</tr>
 	</table>
 	<table>
@@ -73,8 +67,13 @@
 			<p class="item" style="margin-bottom:5px;">Other information?</p>
 		</tr>
 		<tr>
-			<p class="item" style="margin-bottom:5px;"><%= f.check_box :washdry %>Washer/dryer <%= f.check_box :aircond %> Air conditioning <%= f.check_box :handicap %> Handicap accessible</p>
-			<p class="item"><%= f.check_box :parking %>Parking space <%= f.check_box :furnished %>Furnished</p>
+			<p class="item" style="margin-bottom:5px;">
+				<%= f.check_box :washdry %><%= f.label :washdry %>Washer/dryer
+				<%= f.check_box :aircond %><%= f.label  :aircond %>Air conditioning
+				<%= f.check_box :handicap %><%= f.label  :handicap %>Handicap accessible</p>
+			<p class="item">
+				<%= f.check_box :parking %><%= f.label :parking %>Parking space
+				<%= f.check_box :furnished %><%= f.label :furnished %>Furnished</p>
 		</tr>
 	</table>
 	<table>
@@ -82,4 +81,34 @@
     		<td class="item"><%= f.submit %></td>
     	</tr>
 	</table>
+	<!-- in case it doesnt render when in application.css.erb 
+	<style>
+		input[type="checkbox"] + label {
+			color: #aaa;
+			text-decoration: line-through;
+		}
+		input[type="checkbox"]:checked + label {
+		    color: black;
+		    text-decoration: none;
+		}
+		input[type="checkbox"] {
+		    -webkit-appearance: none;
+    		-webkit-border-radius: 0;
+		}
+		input {
+			line-height: normal;
+		    margin: 5px;
+		    padding: 4px 5px;
+		    border: none;
+		}
+		select {
+		    border: none;
+		    background-color: white;
+		    color: #aaa;
+		    -webkit-appearance: none;
+		    -webkit-border-radius: 0px;
+		    padding: 4px 5px;
+		    margin: 5px;
+		}
+	</style> -->
 <% end %>
