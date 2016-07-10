@@ -1,0 +1,63 @@
+  [1m[36mActiveRecord::SchemaMigration Load (2.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  Rendered shared/_navbar.html.erb (15.4ms)
+  Rendered shared/_footer.html.erb (1.4ms)
+  Rendered shared/_signinmodal.html.erb (30.2ms)
+Completed 200 OK in 1681ms (Views: 1667.3ms | ActiveRecord: 0.0ms)
+Processing by OffersController#new as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms)
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (29.6ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+  Rendered shared/_signinmodal.html.erb (0.2ms)
+Completed 200 OK in 278ms (Views: 242.6ms | ActiveRecord: 16.3ms)
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQCe1bk-r92E_iq0NfmW9A3phwH5aZg63KCh_4LuuxZVTC5aK892fWlS5cUgOGd1uzsUpZV09TI6rlJOo3nbIl3_5xdpVp8aRbOcawmZLBU69XeRTvaBHKE838L02ZIp1RylgiYfYHrmrnyaxIJmicb_qb1bvdJ7AhsJjS0jfq00AXK2BmxgiRbqIrXh9RfNFeQseH90ulkAwG5Zxk2bNIADiQgsBa6djpqwlYX0uTMdsg8vvvQNs1fMIb6feuGAfra7lm3SQBQ06sUe2-wKgMdAqJ4CkGV8sqUDm7cpNM9Vzot5k1fAIDeXVADPQju5OGzXYmH9u5unCD35CfrSCJch", "state"=>"f3e6c9d33f424a7fae20f82c556b9745e1d58aec10275ff3"}
+  [1m[35mUser Load (7.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "473418502829853"]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5  [["last_sign_in_at", "2016-07-07 16:10:40.649619"], ["current_sign_in_at", "2016-07-10 21:02:11.225571"], ["sign_in_count", 6], ["updated_at", "2016-07-10 21:02:11.228138"], ["id", 1]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/offers/new
+Completed 302 Found in 43ms (ActiveRecord: 10.2ms)
+Processing by OffersController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered offers/_form.html.erb (2.1ms)
+  Rendered offers/new.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 3.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.7ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (19.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (40.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by OffersController#index as HTML
+  [1m[35mOffer Load (2.6ms)[0m  SELECT "offers".* FROM "offers"
+  [1m[36mUser Load (2.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (4.5ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."offer_id" = $1 AND "likes"."user_id" = $2[0m  [["offer_id", 1], ["user_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."offer_id" = $1  [["offer_id", 1]]
+  Rendered offers/_likes.html.erb (22.4ms)
+  Rendered offers/_offer.html.erb (72.0ms)
+  Rendered offers/index.html.erb within layouts/application (120.0ms)
+  Rendered shared/_navbar.html.erb (4.5ms)
+  Rendered shared/_footer.html.erb (1.0ms)
+  Rendered shared/_signinmodal.html.erb (0.8ms)
+Completed 200 OK in 721ms (Views: 679.3ms | ActiveRecord: 15.9ms)
+Processing by OffersController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered offers/_form.html.erb (77.9ms)
+  Rendered offers/new.html.erb within layouts/application (81.0ms)
+  Rendered shared/_navbar.html.erb (3.8ms)
+  Rendered shared/_footer.html.erb (3.8ms)
+  Rendered shared/_signinmodal.html.erb (1.1ms)
+Completed 200 OK in 499ms (Views: 486.9ms | ActiveRecord: 0.6ms)

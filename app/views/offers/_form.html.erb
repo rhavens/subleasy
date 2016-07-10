@@ -18,7 +18,7 @@
 		<tr>
 			<td class="item"><%= f.text_field :city, :required => true, :placeholder => 'City' %></td>
 		    <td class="item"><%= f.select :state, options_for_select(us_states),{}, class:'form_control', :required => true, :placeholder => 'State' %></td>
-    		<td class="item"><%= f.number_field :zip, within: 0...99999, :required => true, :placeholder: 'Zip' %></td>
+    		<td class="item"><%= f.number_field :zip, within: 0...99999, :required => true, :placeholder => 'Zip' %></td>
     	</tr>
 	</table>
 	<table style="margin-top:40px;">
