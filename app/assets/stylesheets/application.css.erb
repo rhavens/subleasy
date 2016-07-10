@@ -27,17 +27,17 @@
 
 #map-container {
 	text-align: center;
-	margin: auto;
-	height: auto;
-	border-color: #fff;
-	border-style: solid;
-	box-shadow: 2px 2px 10px #B1B1B1;
-	border-width: 7px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 65px;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 #map-canvas {
-	height: 484px;
-	width: 100%;
+	height: 100%;
 }
 
 html { height:100%; }
@@ -351,14 +351,14 @@ a.ui.item.nav-link:hover {
 input[type="checkbox"] + label {
 	color: #aaa;
 	text-decoration: line-through;
+	cursor: pointer;
 }
 input[type="checkbox"]:checked + label {
     color: black;
     text-decoration: none;
 }
 input[type="checkbox"] {
-    -webkit-appearance: none;
-	-webkit-border-radius: 0;
+	display: none;
 }
 input {
 	line-height: normal;
@@ -370,6 +370,7 @@ select {
     border: none;
     background-color: white;
     color: #aaa;
+    -moz-appearance: none;
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
     padding: 4px 5px;
@@ -392,4 +393,27 @@ select {
 	margin: 0 0 10px 5px;
     padding: 0;
     text-align: left;
+}
+
+.form_control:invalid {
+	color: #969699;
+}
+
+tr {
+	margin-bottom: 5px;
+	display: block;
+}
+
+textarea {
+	background-color: white;
+	border: none;
+}
+
+.ui.wrapper.offers-index {
+	position: absolute;
+	left: 0px;
+	width: 300px;
+	top: 65px;
+	bottom: 0px;
+	background-color: white;
 }

@@ -9,7 +9,7 @@
 	<table>
   		<tr>
   			<td class="item"><%= f.text_field :image, :placeholder => 'Link to photo for listing' %></td>
-  			<td class="item"><%= f.select :school, options_for_select(supported_schools),{}, class:'form_control', :required => true, :placeholder => 'School' %></td>
+  			<td class="item"><%= f.select :school, options_for_select(supported_schools),{:include_blank => 'School'}, class:'form_control', :required => true %></td>
   		</tr>
   		<tr>
 			<td class="item"><%= f.text_field :line1, :required => true, :placeholder => 'Address Line 1' %></td>
@@ -17,7 +17,7 @@
 		</tr>
 		<tr>
 			<td class="item"><%= f.text_field :city, :required => true, :placeholder => 'City' %></td>
-		    <td class="item"><%= f.select :state, options_for_select(us_states),{}, class:'form_control', :required => true, :placeholder => 'State' %></td>
+		    <td class="item"><%= f.select :state, options_for_select(us_states),{:include_blank => 'State'}, class:'form_control', :required => true %></td>
     		<td class="item"><%= f.number_field :zip, within: 0...99999, :required => true, :placeholder => 'Zip' %></td>
     	</tr>
 	</table>
@@ -29,27 +29,19 @@
 			<td class="item"><%= f.text_area :description, :maxlength => '750', size: '40x5', :required => true, :placeholder => 'Description (max 750 characters)' %></td>
 		</tr>
 		<tr>
-			<td class="item">Earliest potential start date</td>
+			<td class="item">Start date</td>
 		</tr>
 		<tr>
 			<td class="item">
-				<%= f.date_field :start_date, :required => true %>
+				<%= f.date_select :start_date, :required => true %>
 			</td>
 		</tr>
 		<tr>
-			<td class="item">Latest potential end date</td>
+			<td class="item">End date</td>
 		</tr>
 		<tr>
 			<td class="item">
-				<%= f.date_field :start_date, :required => true %>
-			</td>
-		</tr>
-		<tr>
-			<td class="item">Latest potential end date</td>
-		</tr>
-		<tr>
-			<td class="item">
-				<%= f.date_field :end_date, :required => true %>
+				<%= f.date_select :end_date, :required => true %>
 			</td>
 		</tr>
 	</table>
@@ -61,11 +53,11 @@
 	<table>
 		<tr>
 			<p class="item" style="margin-bottom:5px;">
-				<%= f.check_box :water %><%= f.label :water %>Water
-				<%= f.check_box :electric %><%= f.label :electric %>Electric
-				<%= f.check_box :gas %><%= f.label :gas %>Gas
-				<%= f.check_box :heat %><%= f.label :heat %>Heat
-				<%= f.check_box :internet %><%= f.label :internet %>Internet</p>
+				<%= f.check_box :water %><%= f.label :water, 'Water' %>
+				<%= f.check_box :electric %><%= f.label :electric, 'Electric' %>
+				<%= f.check_box :gas %><%= f.label :gas, 'Gas' %>
+				<%= f.check_box :heat %><%= f.label :heat, 'Heat' %>
+				<%= f.check_box :internet %><%= f.label :internet, 'Internet' %></p>
 		</tr>
 	</table>
 	<table>
@@ -74,12 +66,12 @@
 		</tr>
 		<tr>
 			<p class="item" style="margin-bottom:5px;">
-				<%= f.check_box :washdry %><%= f.label :washdry %>Washer/dryer
-				<%= f.check_box :aircond %><%= f.label  :aircond %>Air conditioning
-				<%= f.check_box :handicap %><%= f.label  :handicap %>Handicap accessible</p>
+				<%= f.check_box :washdry %><%= f.label :washdry, 'Washer/dryer' %>
+				<%= f.check_box :aircond %><%= f.label  :aircond, 'Air conditioning' %>
+				<%= f.check_box :handicap %><%= f.label  :handicap, 'Handicap accessible' %></p>
 			<p class="item">
-				<%= f.check_box :parking %><%= f.label :parking %>Parking space
-				<%= f.check_box :furnished %><%= f.label :furnished %>Furnished</p>
+				<%= f.check_box :parking %><%= f.label :parking, 'Parking space' %>
+				<%= f.check_box :furnished %><%= f.label :furnished , 'Furnished'%></p>
 		</tr>
 	</table>
 	<table>
@@ -87,34 +79,4 @@
     		<td class="item"><%= f.submit %></td>
     	</tr>
 	</table>
-	<!-- in case it doesnt render when in application.css.erb 
-	<style>
-		input[type="checkbox"] + label {
-			color: #aaa;
-			text-decoration: line-through;
-		}
-		input[type="checkbox"]:checked + label {
-		    color: black;
-		    text-decoration: none;
-		}
-		input[type="checkbox"] {
-		    -webkit-appearance: none;
-    		-webkit-border-radius: 0;
-		}
-		input {
-			line-height: normal;
-		    margin: 5px;
-		    padding: 4px 5px;
-		    border: none;
-		}
-		select {
-		    border: none;
-		    background-color: white;
-		    color: #aaa;
-		    -webkit-appearance: none;
-		    -webkit-border-radius: 0px;
-		    padding: 4px 5px;
-		    margin: 5px;
-		}
-	</style> -->
 <% end %>
