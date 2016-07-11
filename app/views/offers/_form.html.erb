@@ -1,19 +1,12 @@
-<!-- what i changed here: 
-	added ":placeholder" but i dont speak ruby so not sure if thats written correctly.
-	added "label" fields for every checkbox. definitely not written correctly, so look into
-		how to add a label and match it to the correct checkbox via checkbox's ID.
- -->
-
 <%= form_for @offer do |f| %>
 	<%= f.hidden_field :interested, value: 0 %>
-	<table>
+	<table class="new-form-table">
+		<tr>
+			<td><h3 class="form-header">Where is your sublet?</h3></td>
+		</tr>
   		<tr>
-  			<td class="item"><%= f.text_field :image, :placeholder => 'Link to photo for listing' %></td>
-  			<td class="item"><%= f.select :school, options_for_select(supported_schools),{:include_blank => 'School'}, class:'form_control', :required => true %></td>
-  		</tr>
-  		<tr>
-			<td class="item"><%= f.text_field :line1, :required => true, :placeholder => 'Address Line 1' %></td>
-		    <td class="item"><%= f.text_field :line2, :placeholder => 'Address Line 2' %></td>
+			<td class="item half"><%= f.text_field :line1, :required => true, :placeholder => 'Address Line 1' %></td>
+		    <td class="item half"><%= f.text_field :line2, :placeholder => 'Address Line 2' %></td>
 		</tr>
 		<tr>
 			<td class="item"><%= f.text_field :city, :required => true, :placeholder => 'City' %></td>
@@ -21,36 +14,36 @@
     		<td class="item"><%= f.number_field :zip, within: 0...99999, :required => true, :placeholder => 'Zip' %></td>
     	</tr>
 	</table>
-	<table style="margin-top:40px;">
+	<table class="new-form-table">
 		<tr>
-			<td class="item"><%= f.number_field :rent, within: 0...9999, :required => true, :placeholder => 'Rent' %></td>
+			<td><h3 class="form-header">Tell us a bit about your sublet.</h3></td>
+		</tr>
+		<tr>
+			<td class="item half-line"><%= f.number_field :rent, within: 0...9999, :required => true, :placeholder => 'Rent' %></td>
+  			<td class="item half-line"><%= f.text_field :image, :placeholder => 'Link to photo for listing' %></td>
+  			<td class="item half-line"><%= f.select :school, options_for_select(supported_schools),{:include_blank => 'School'}, class:'form_control', :required => true %></td>
 		</tr>
 		<tr>
 			<td class="item"><%= f.text_area :description, :maxlength => '750', size: '40x5', :required => true, :placeholder => 'Description (max 750 characters)' %></td>
 		</tr>
+	</table>
+	<table class="new-form-table">
 		<tr>
-			<td class="item">Start date</td>
+			<td><h3 class="form-header">What start and end dates are you hoping for?</h3></td>
 		</tr>
 		<tr>
-			<td class="item">
+			<td class="item half-line">
 				<%= f.date_select :start_date, :required => true %>
 			</td>
-		</tr>
-		<tr>
-			<td class="item">End date</td>
-		</tr>
-		<tr>
-			<td class="item">
+			<td class="item half-line">
 				<%= f.date_select :end_date, :required => true %>
 			</td>
 		</tr>
 	</table>
-	<table>
+	<table class="new-form-table">
 		<tr>
-			<p class="item" style="margin-bottom:5px;margin-top:5px;">Utilities included?</p>
+			<td><h3 class="form-header">What utilities are included?</h3></td>
 		</tr>
-	</table>
-	<table>
 		<tr>
 			<p class="item" style="margin-bottom:5px;">
 				<%= f.check_box :water %><%= f.label :water, 'Water' %>
@@ -60,9 +53,9 @@
 				<%= f.check_box :internet %><%= f.label :internet, 'Internet' %></p>
 		</tr>
 	</table>
-	<table>
+	<table class="new-form-table">
 		<tr>
-			<p class="item" style="margin-bottom:5px;">Other information?</p>
+			<td><h3 class="form-header">Other information?</h3></td>
 		</tr>
 		<tr>
 			<p class="item" style="margin-bottom:5px;">
@@ -74,7 +67,7 @@
 				<%= f.check_box :furnished %><%= f.label :furnished , 'Furnished'%></p>
 		</tr>
 	</table>
-	<table>
+	<table class="new-form-table">
 		<tr>
     		<td class="item"><%= f.submit %></td>
     	</tr>
