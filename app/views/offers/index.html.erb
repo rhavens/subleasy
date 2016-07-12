@@ -8,7 +8,7 @@
 		<p class='item no-top-margin'>Markers on the map are colored by monthly rent, from <span style='color:green'>low</span> to <span style='color:red'>high</span></p>
 		<div id='filters'>
 			<p class='item' style='margin-bottom:1em;'>Max rent</p>
-			<p class='filter-item item'><input class='filter-item item' type='number' id='max-rent'></p>
+			<p class='filter-item item'><input class='item' type='number' id='max-rent'></p>
 			<p class='item'>Start date</p>
 			<p class='filter-item item'><%= date_select 'start-date', nil, { :start_year => Date.today.year, :default => Time.now, :prompt => { day: 'Day', month: 'Month', year: 'Year'}} %></p>
 			<p class='item'>End date</p>

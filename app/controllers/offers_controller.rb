@@ -9,7 +9,7 @@ class OffersController < AuthController
 		end
 		@offers = Offer.where(school: params[:school])
 		if (@offers.size == 0)
-			flash.now[:error] = "#{@offers.size}Error! Your school was not found."
+			flash.now[:error] = "Error! Your school was not found."
 		end
 	end
 
