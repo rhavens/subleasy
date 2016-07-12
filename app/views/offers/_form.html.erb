@@ -35,6 +35,7 @@
 			<td class="item half-line">
 				<%= f.date_select :start_date, :required => true %>
 			</td>
+			<td class='item half-line'>through</td>
 			<td class="item half-line">
 				<%= f.date_select :end_date, :required => true %>
 			</td>
@@ -45,12 +46,12 @@
 			<td><h3 class="form-header">What utilities are included?</h3></td>
 		</tr>
 		<tr>
-			<p class="item">
+			<td class="item">
 				<%= f.check_box :water %><%= f.label :water, 'Water' %>
 				<%= f.check_box :electric %><%= f.label :electric, 'Electric' %>
 				<%= f.check_box :gas %><%= f.label :gas, 'Gas' %>
 				<%= f.check_box :heat %><%= f.label :heat, 'Heat' %>
-				<%= f.check_box :internet %><%= f.label :internet, 'Internet' %></p>
+				<%= f.check_box :internet %><%= f.label :internet, 'Internet' %></td>
 		</tr>
 	</table>
 	<table class="new-form-table">
@@ -58,13 +59,13 @@
 			<td><h3 class="form-header">Other information?</h3></td>
 		</tr>
 		<tr>
-			<p class="item multi-line">
+			<td class="item multi-line">
 				<%= f.check_box :washdry %><%= f.label :washdry, 'Washer/dryer' %>
 				<%= f.check_box :aircond %><%= f.label  :aircond, 'Air conditioning' %>
-				<%= f.check_box :handicap %><%= f.label  :handicap, 'Handicap accessible' %></p>
-			<p class="item">
+				<%= f.check_box :handicap %><%= f.label  :handicap, 'Handicap accessible' %></td>
+			<td class="item">
 				<%= f.check_box :parking %><%= f.label :parking, 'Parking space' %>
-				<%= f.check_box :furnished %><%= f.label :furnished , 'Furnished'%></p>
+				<%= f.check_box :furnished %><%= f.label :furnished , 'Furnished'%></td>
 		</tr>
 	</table>
 	<table class="new-form-table">

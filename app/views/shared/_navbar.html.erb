@@ -1,50 +1,25 @@
 <div class="ui page grid center nav-holder">
-        <nav class="ui inverted menu navbar">
-            <div class="left menu nav-elem">
-                <%= link_to (image_tag "SubleasyLogo2.png", :class=>"ui logo"), :home, :class=>"item zero-pad" %>
-            </div>
-            <div class="right menu nav-elem">
-                <%= link_to '<span class="vert"><i class="icon shop"></i>Sublets</span>'.html_safe, :offers, 'data-no-turbolink' => true, :class=>"item nav-link" %>
-                <%= link_to '<span class="vert"><i class="icon home"></i>New Offer</span>'.html_safe, new_offer_path, :class=>"item nav-link" %>
-                <% if user_signed_in? %>
-                    <div class="ui simple item nav-link dropdown">
-                        <span class='vert'><%= current_user.name.split.first %><i class="dropdown icon"></i>
-                        <img class="ui nav-img zero-pad profile-pic" src='http://graph.facebook.com/<%= current_user.uid %>/picture'></img>
-                        </span>
-                        <div class="item menu zero-pad" style="background-color:white;">
-                            <span class='ui item nav-link' style='padding-right: 0 !important;'><i class="nomargin setting icon"></i></span>
-                          <%= link_to 'My Offers'.html_safe, current_user, :class=>'ui item nav-link' %>
-                          <%= link_to 'Account', edit_user_registration_path, :class => 'ui item nav-link' %>
-                          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'ui item nav-link' %>
-                        </div>
+    <nav class="ui inverted menu navbar">
+        <div class="left menu nav-elem">
+            <%= link_to (image_tag "SubleasyLogo2.png", :class=>"ui logo"), :home, :id =>"subleasy-logo", :class=>"item zero-pad" %>
+        </div>
+        <div class="right menu nav-elem">
+            <%= link_to '<span class="vert"><i class="icon shop"></i>Sublets</span>'.html_safe, offers_path(:school => 'Tufts University'), 'data-no-turbolink' => true, :class=>"item nav-link" %>
+            <%= link_to '<span class="vert"><i class="icon home"></i>New Offer</span>'.html_safe, new_offer_path, :class=>"item nav-link" %>
+            <% if user_signed_in? %>
+                <div class="ui simple item nav-link dropdown">
+                    <span class='vert'><%= current_user.name.split.first %><i class="dropdown icon"></i>
+                    <img class="ui nav-img zero-pad profile-pic" src='http://graph.facebook.com/<%= current_user.uid %>/picture'></img>
+                    </span>
+                    <div id='user-menu' class="item menu zero-pad">
+                      <%= link_to 'My Offers'.html_safe, current_user, :class=>'ui item nav-link' %>
+                      <%= link_to 'Account', edit_user_registration_path, :class => 'ui item nav-link' %>
+                      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'ui item nav-link' %>
                     </div>
-            	<% else %>
-                  <a href='#' onclick='signinmodalShow()' class='item nav-link'><span class='vert'><i class='facebook square icon'></i>Sign in with Facebook</span></a>
-            	<% end %>
-            </div>
-        </nav>
-
-        <!-- MESSAGE SUPPORT -->
-        <div class="ui page grid notice-bar">
-            <% flash.each do |key, value| %>
-                <% if value.respond_to?('each') %>
-        			<div class="ui item <%= key %> message alert alert-danger">
-        				<% value.each do |element| %>
-        					<p class="item"><%= element %>.</p>
-        				<% end %>
-        			</div>
-                <% else %>
-                    <% if (key == "notice" || key == "success") %>
-                        <div class="ui item success message alert alert-danger">
-                            <p class="item"><%= value %></p>
-                        </div>
-                    <% end %>
-                    <% if (key == "alert" || key == "error") %>
-                        <div class="ui item error message alert alert-danger">
-                            <p class="item"><%= value %></p>
-                        </div>
-                    <% end %>
-        	    <% end %>
+                </div>
+        	<% else %>
+              <a href='#' onclick='signinmodalShow()' class='item nav-link'><span class='vert'><i class='facebook square icon'></i>Sign in with Facebook</span></a>
         	<% end %>
         </div>
-    </div>
+    </nav>
+</div>

@@ -11,7 +11,7 @@ class UsersController < AuthController
 	def destroy
 		if (current_user.uid == "473418502829853")
 			User.find(params[:id]).destroy
-			flash[:success] = "User destroyed"
+			flash.now[:success] = "User destroyed"
 			redirect_to :home
 		end
 	end

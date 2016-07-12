@@ -1,0 +1,23 @@
+<!-- MESSAGE SUPPORT -->
+<div class="ui page grid notice-bar">
+    <% flash.each do |key, value| %>
+        <% if value.respond_to?('each') %>
+			<div class="ui item <%= key %> message alert alert-danger">
+				<% value.each do |element| %>
+					<p class="item"><%= element %>.</p>
+				<% end %>
+			</div>
+        <% else %>
+            <% if (key == "notice" || key == "success") %>
+                <div class="ui item success message alert alert-danger">
+                    <p class="item"><%= value %></p>
+                </div>
+            <% end %>
+            <% if (key == "alert" || key == "error") %>
+                <div class="ui item error message alert alert-danger">
+                    <p class="item"><%= value %></p>
+                </div>
+            <% end %>
+	    <% end %>
+	<% end %>
+</div>

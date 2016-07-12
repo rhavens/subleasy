@@ -2,42 +2,27 @@
  	<div id='map-canvas'></div>
 </div>
 <div class='ui wrapper offers-index' style='text-align:center;'>
-	<h1 class='page-title'>Sublets on the Market</h1>
-
-	<p class='item'><br><br></p>
-	<div class='ui top attached tabular menu' id='filter-tab'>
-		<div class='active item filter-item' id='filter-by'>Filter by:</div>
-  	<a onmousedown="togText('rent')" class='active item filter-item' id='rent'>
-    	Rent
-  	</a>
-  	<a onmousedown="togText('date')" class='item filter-item' id='date'>
-    	Available Dates
- 		</a>
- 		<a onmousedown="togText('clear')" class='item filter-item' id='clear'>
-    	Clear Filters
- 		</a>
-	</div>
-
 	<!-- FILTERS -->
-	<div class='ui bottom attached segment' id='filter-content'>
-		<p class='item no-top-margin'><br/></p>
-		<div class='ui' style='display:block' id='c-rent'>
-			<p class='item no-top-margin'>Markers on the map are colored by monthly rent. Low rent is greenish, high rent is reddish.<br/><br/>Filter results by max rent: <input class='item' type='number' id='maxrent' value=0><br/></p>
-			<div class='ui blue button'>
-				<p id='maxrentbutton' class='item' style="margin:0;">Go</p>
+	<div class='ui'>
+		<h3>Find your dream sublet...</h3>
+		<p class='item no-top-margin'>Markers on the map are colored by monthly rent, from <span style='color:green'>low</span> to <span style='color:red'>high</span></p>
+		<div id='filters'>
+			<p class='item' style='margin-bottom:1em;'>Max rent</p>
+			<p class='filter-item item'><input class='filter-item item' type='number' id='max-rent'></p>
+			<p class='item'>Start date</p>
+			<p class='filter-item item'><%= date_select 'start-date', nil, { :start_year => Date.today.year, :default => Time.now, :prompt => { day: 'Day', month: 'Month', year: 'Year'}} %></p>
+			<p class='item'>End date</p>
+			<p class='filter-item item no-top-margin'><%= date_select 'end-date', nil, { :start_year => Date.today.year, :default => Time.now, :prompt => { day: 'Day', month: 'Month', year: 'Year'}} %></p>
+		</div>
+		<div class='ui button-group'>
+			<div class='ui sketchButton'>
+				<p id='filtergo' class='item'>Go</p>
+			</div>
+			<div class='ui sketchButton reset-button'>
+				<p id='reset-filters' class='item'>Reset</p>
 			</div>
 		</div>
-		<div class='ui' style='display:none' id='c-date'>
-			<p class='item'>Remove offers from the map that don't fit your schedule. Markers on the map are colored by monthly rent.</p>
-			<p class='item'>Start date: <%= date_field_tag 'start-date', nil, class: 'item' %></p>
-			<p class='item'>End date: <%= date_field_tag 'end-date', nil, class: 'item' %></p>
-			<div class='ui blue button'>
-				<p id='datebutton' class='item' style="margin:0;">Go</p>
-			</div>
-		</div>
-		<p class='item no-top-margin'><br/></p>
 	</div>
-	<p class='item'><br><br></p>
 </div>
 	<!-- MODALS -->
 <div>
@@ -45,7 +30,6 @@
  	<div id='<%= offer.id %>modal' class='ui' style='display:none; text-align:center;'>
 		<div class='text-wrapper modal-styles'>
 			<%= render partial: 'offer', locals: {offer: offer } %>
-			<p class='item'><br/></p>
 		</div>
 	</div>
 	<% end %>
@@ -85,10 +69,11 @@
 		minP = array[0][parameter]
 		maxP = array[array.length-1][parameter]
 		for (var i = 0; i < array.length; i++) {
-	  	  	var pinImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + hsv2rgb(array[i][parameter], minP, maxP),
-	   	        new google.maps.Size(21, 34),
-	   	        new google.maps.Point(0,0),
-	   	        new google.maps.Point(10, 34));
+	  	  	var pinImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + newColorFunc(array[i][parameter], minP, maxP));
+	   	  //       new google.maps.Size(21, 34),
+	   	  //       new google.maps.Point(0,0),
+	   	  //       new google.maps.Point(10, 34));
+	   	  	// var pinImage = newColorFunc(array[i][parameter], minP, maxP);
 	  	  	var marker = new google.maps.Marker({
 			    	position: new google.maps.LatLng(array[i].latitude, array[i].longitude),
 			    	map: map,
@@ -156,6 +141,24 @@
 	//     // return componentToHex(r) + componentToHex(g) + componentToHex(b);
 	// }
 
+	var newColorFunc = function(val, min, max) {
+		var relativeValue = (val - min)/(max - min + 0.001);
+		console.log(val, relativeValue);
+		if (relativeValue < .25) {
+			return '00ff00';
+		}
+		else if (relativeValue < .5) {
+			return 'ffff00';
+		}
+		else if (relativeValue < .75) {
+			return 'ffa500';
+		}
+		else {
+			return 'ff0000';
+		}
+		
+	}
+
 	var hsv2rgb = function(val, min, max) {
 	  // adapted from http://schinckel.net/2012/01/10/hsv-to-rgb-in-javascript/
 	  var h = Math.floor(((max - min) - (val - min)) * 120 / (max - min + 0.001));
@@ -204,11 +207,6 @@
 	offers = sortByKey(offers, 'rent')
 	offers_filtered = offers
 	offers_for_modal = offers_filtered
-	bRentFiltered = false
-	bDateFiltered = false
-	sRentFilter = ''
-	sStartDateFilter = ''
-	sEndDateFilter = ''
 	const TOLERANCE = 0.000001 // Floating point issues with lat/lng
 	// TODO mismatched start/end date, illogical start/end date
 
@@ -221,99 +219,71 @@
 	}
 
 	$(document).ready(function() {
-		$('#maxrent').keyup(function (event) {
+		$('#max-rent').keydown(function (event) {
 			if (event.keyCode == 13) {
-				return filterRent();
+				runFilters();
 			}
 		});
-		$('#start-date').keyup(function (event) {
+		$('#start-date').keydown(function (event) {
 			if (event.keyCode == 13) {
-				return filterDate();
+				runFilters();
 			}
 		});
-		$('#end-date').keyup(function (event) {
+		$('#end-date').keydown(function (event) {
 			if (event.keyCode == 13) {
-				return filterDate();
+				runFilters();
 			}
 		});
-		$('#maxrentbutton').click(function() {
-			return filterRent();
+		$('#filtergo').click(function() {
+			runFilters();
 		});
-		$('#datebutton').click(function() {
-			return filterDate();
+		$('#reset-filters').click(function() {
+			$('#max-rent').val('');
+			$('#filters [name*="start-date"] :selected').each(function() { 
+				$(this).removeAttr('selected');
+			});
+			$('#filters [name*="end-date"] :selected').each(function() { 
+				$(this).removeAttr('selected');
+			});
+			generateMarkersByParameter(offers, 'rent');
 		});
 	});
 
-	function resetFilters() {
-		bRentFiltered = false
-		bDateFiltered = false
-	}
-
-	function updateFilterByText() {
-		// This function is written a bit sloppily because we only have
-		// four cases at the moment, this way is more efficient than 
-		// concatenating strings. TODO add more filters.
-		if (bRentFiltered && bDateFiltered) {
-			text = 'Filter by: $' + sRentFilter + ', ' + sStartDateFilter + ' to ' + sEndDateFilter
-		}
-		else if (bDateFiltered) {
-			text = 'Filter by:  ' + sStartDateFilter + ' to ' + sEndDateFilter
-		}
-		else if (bRentFiltered) {
-			text = 'Filter by: $' + sRentFilter
-		}
-		else
-		{
-			text = 'Filter by:'
-		}
-		$('#filter-by').text(text)
-	}
-
-	active = 'rent'
-	function togText(filter) {
-		if (filter == 'clear')
-		{
-			resetFilters()
-			generateMarkersByParameter(offers, 'rent');
-		}
-		else
-		{
-			if (filter != active) {
-				$('#'+filter).addClass('active')
-				$('#'+active).removeClass('active')
-				$('#c-'+filter).css('display','block')
-				$('#c-'+active).css('display','none')
-				active = filter
-			}
-		}
-		updateFilterByText()
-	}
-
 	function runFilters() {
-		offersfiltered = offers
-		if (bRentFiltered) {
-			offersfiltered = offersfiltered.filter(function(item){return item['rent'] <= sRentFilter})
-		}
-		if (bDateFiltered) {
-			offersfiltered = offersfiltered.filter(function(item){return ((item['start_date'] <= sStartDateFilter) && (item['end_date'] >= sEndDateFilter))})
-		}
-	}
+		var rentFilter = Number($('#max-rent').val());
+		var startDateFilter = '';
+		$('#filters [name*="start-date"] :selected').each(function() { 
+			var temp = $(this).val();
+			if (temp.length == 1) {
+				temp = '0' + temp;
+			}
+			startDateFilter+=temp+'-'; 
+		});
+		startDateFilter = startDateFilter.slice(0, -1);
 
-	function filterRent() {
-		bRentFiltered = true
-		sRentFilter = $('#maxrent').val()
-		runFilters()
-		generateMarkersByParameter(offersfiltered, 'rent');
-		updateFilterByText()
-	}
+		var endDateFilter = '';
+		$('#filters [name*="end-date"] :selected').each(function() { 
+			var temp = $(this).val();
+			if (temp.length == 1) {
+				temp = '0' + temp;
+			}
+			endDateFilter+=temp+'-'; 
+		});
+		endDateFilter = endDateFilter.slice(0, -1);
 
-	function filterDate() {
-		bDateFiltered = true
-		sStartDateFilter = $('#start-date').val()
-		sEndDateFilter = $('#end-date').val()
-		runFilters()
-		generateMarkersByParameter(offersfiltered, 'rent');
-		updateFilterByText()
+		var offersFiltered = offers.slice(0);
+
+		console.log(rentFilter);
+		console.log(offersFiltered)
+
+		if (rentFilter != 0) {
+			offersFiltered = offersFiltered.filter(function(item) { return item['rent'] <= rentFilter});	
+		}
+		if (startDateFilter != endDateFilter) {
+			offersFiltered = offersFiltered.filter(function(item){return ((item['start_date'] <= startDateFilter) && (item['end_date'] >= endDateFilter))});
+		}
+		console.log(offersFiltered)
+		generateMarkersByParameter(offersFiltered, 'rent');
 	}
 
 	function genOfferModal(lat,lng) {

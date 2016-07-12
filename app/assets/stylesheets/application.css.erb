@@ -27,13 +27,12 @@
 
 #map-container {
 	text-align: center;
-	width: 100%;
-	height: 100%;
 	position: absolute;
 	top: 65px;
-	bottom: 0;
-	left: 0;
+	bottom: 50px;
+	left: 300px;
 	right: 0;
+	padding: 0;
 }
 
 #map-canvas {
@@ -60,7 +59,7 @@ nav {
 .notice-bar {
 	text-align: center !important;
 	margin-top: 10px !important;
-	z-index: 9999999;
+	z-index: 99;
 }
 
 .nomargin {
@@ -78,14 +77,21 @@ nav {
 
 .ui .logo {
 	background-color: #fff;
-	height: 40px;
-	width: 110px;
-	padding: 0;
+	height: 50px;
+}
+
+#subleasy-logo {
+	padding: 13px 0px;
+	background-color: white;
+	margin-left: 30px;
+}
+
+#subleasy-logo:hover {
+	background-color: white;
 }
 
 /* or 35px, idrc */
 .zero-pad {
-	padding: 13px 0 !important;
 	background-color: #fff;
 }	
 
@@ -165,9 +171,13 @@ td {
 }
 
 .searchContainer {
-    height: 300px;
+    min-height: 300px;
     border: 1px solid rgba(34, 98, 162, 0.5);
     background-color: rgba(122, 173, 223, 0.5);
+}
+
+.searchContainer form {
+	margin-bottom: 10px;
 }
 
 .searchContainer h1 {
@@ -182,28 +192,54 @@ td {
     background: #f8f8ff;
     font-size: 20px;
     border: none;
+    margin-bottom: 10px;
 }
 
 #sketchCodedSearchButton, input[type="submit"] {
 	color: #f8f8ff;
-	background-color: rgba(34, 98, 162, 0.5);
-	border: 1px solid rgba(34, 98, 162, 0.5);
-    margin-left: 15px;
     vertical-align: top;
-    padding: 6px 20px 9px 20px;
+    background-color: #2261a0;
+    padding: 8px 20px;
     font-size: 20px;
 }
 
-#sketchCodedSearchButton, input[type="submit"]:hover {
-	background-color: #2261a0;
-	border-color: #2261a0;
+#sketchCodedSearchButton:hover, input[type="submit"]:hover {
+	background-color: rgba(34, 98, 162, 0.5);
 }
 
-.page-title {
-	padding: 0 !important;
+.sketchButton {
+	color: #f8f8ff;
+    background-color: #2261a0;
+    padding: 8px 20px;
+    font-size: 20px;
+    width: 100px;
+    cursor: pointer;
+    margin: 1em .5em;
+    display: inline-block;
+}
+
+.button-group {
+	margin: 0 auto;
+}
+
+.sketchButton:hover {
+	background-color: rgba(34, 98, 162, 0.8);
+}
+
+.reset-button {
+	background-color: #999;
+}
+
+.reset-button:hover {
+	background-color: #aaa;
+}
+
+h1.page-title {
+	padding: 0;
 	margin-top: 30px;
 	margin-bottom: 30px;
 	font-size: 3rem;
+	text-align: center;
 }
 
 .strong {
@@ -220,11 +256,12 @@ p:first-child, p:last-child {
   margin-bottom: 30px;
 }
 
-#filter-tab {
+#filters {
 	display: block !important;
 }
 
 .filter-item {
+	outline: 1px solid rgb(122, 173, 223);
 	display: inline-block !important;
 }
 
@@ -232,17 +269,22 @@ p:first-child, p:last-child {
 	margin-top: 0px !important;
 }
 
+.no-margin {
+	margin: 0 !important;
+}
+
 .footer {
 	position: absolute;
 	color: white;
-	padding: 25px 0 !important;
+	padding: 10px 0;
 	width: 100%;
-	background-color: rgb(34, 98, 162) !important;
+	height: 50px;
+	background-color: rgb(34, 98, 162);
 	bottom: 0;
 	text-align: center;
-	border-top-style: solid !important;
-	border-top-width: 10px !important;
-	border-top-color: rgb(122, 173, 223) !important;
+	border-top-style: solid;
+	border-top-width: 5px;
+	border-top-color: rgb(122, 173, 223);
 }
 
 .footer p {
@@ -250,12 +292,13 @@ p:first-child, p:last-child {
 	padding: 0 20px;
 }
 
-.footer a {
+.footer p a {
 	color: white;
 	text-decoration: none;
 }
 
-.footer a:hover {
+.footer p a:hover {
+	color: white;
 	text-decoration: underline;
 }
 
@@ -282,6 +325,16 @@ p:first-child, p:last-child {
 	display: inline-block !important;
 }
 
+.ui.simple.item.nav-link.dropdown .menu {
+	margin-top: -10px !important;
+}
+
+#user-menu {
+	margin-top: -10px !important;
+	background-color: white;
+	padding: 5px;
+}
+
 .right-align {
 	text-align: right !important;
 }
@@ -305,6 +358,7 @@ p:first-child, p:last-child {
 	display: block;
 	left: 50%;
 	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
 
 tr.buffered > td {
@@ -414,15 +468,17 @@ textarea {
 	left: 0px;
 	width: 300px;
 	top: 65px;
-	bottom: 0px;
+	bottom: 50px;
+	overflow-y: auto;
 	background-color: white;
+	padding: 10px 5px;
 }
 
 .half-line {
 	display: inline;
 }
 
-.form-header {
+h3.form-header {
 	margin: 0 0 10px 0;
 }
 

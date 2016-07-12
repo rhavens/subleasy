@@ -2,8 +2,9 @@
   <p class='item'><br/></p>
   <div class='ui page centered grid searchContainer'>
     <h1 class='page-title'>A simple solution to campus subletting</h1>
-    <form action="TODO">
-      <input id="searchBox" type="text" name="fname" placeholder="Find a sublet by your campus...">
+    <form action="offers">
+      <%= select_tag "school", options_for_select(supported_schools), :include_blank => 'Find a sublet near your campus...', id: 'searchBox', class:'item form_control' %>
+      <!-- <input id="searchBox" type="text" name="fname" placeholder="Find a sublet by your campus..."> -->
       <input id="sketchCodedSearchButton" type="submit" value="Search">
     </form>
   </div>
@@ -30,6 +31,11 @@
 </div>
 <script>
   $(document).ready(function() {
-      $('#welcomemodal').modal('show');
+      if (window.localStorage) {
+        if (!(localStorage.getItem('welcomeModalSeen'))) {
+          $('#welcomemodal').modal('show');
+          localStorage.setItem('welcomeModalSeen',1);
+        }
+      }
   });
 </script>

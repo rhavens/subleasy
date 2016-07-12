@@ -4,7 +4,13 @@ class OffersController < AuthController
 	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
-		@offers = Offer.all
+		if (params[:school].size == 0)
+			params[:school] = "Tufts University"
+		end
+		@offers = Offer.where(school: params[:school])
+		if (@offers.size == 0)
+			flash.now[:error] = "#{@offers.size}Error! Your school was not found."
+		end
 	end
 
 	def show
@@ -24,11 +30,11 @@ class OffersController < AuthController
 
 		respond_to do |format|
 			if @offer.save
-				flash[:success] = "Success! Your offer has been posted."
+				flash.now[:success] = "Success! Your offer has been posted."
 				format.html {redirect_to @offer }
 				format.json {render :show, status: :created, location: @post }
 			else
-				flash[:error] = @offer.errors.full_messages
+				flash.now[:error] = @offer.errors.full_messages
 				format.html { render :new }
 				format.json { render json: @offer.errors.full_messages, status: :unprocessable_entity }
 			end
@@ -45,11 +51,11 @@ class OffersController < AuthController
 	def update
 		respond_to do |format|
 			if @offer.update(offer_params)
-				flash[:success] = "Success! Your offer has been updated."
+				flash.now[:success] = "Success! Your offer has been updated."
 				format.html { redirect_to @offer }
 				format.json { render :show, status: :ok, location: @offer }
 			else
-				flash[:error] = @offer.errors.full_messages
+				flash.now[:error] = @offer.errors.full_messages
 				format.html { render :edit }
 				format.json { render json: @offer.errors.full_messages, status: :unprocessable_entity }
 			end
@@ -67,7 +73,7 @@ class OffersController < AuthController
 	def destroy
 		@offer.destroy
 		respond_to do |format|
-			flash[:success] = "Offer was successfully deleted."
+			flash.now[:success] = "Offer was successfully deleted."
 			format.html { redirect_to offers_path }
 			format.json { head :no_content }
 		end
